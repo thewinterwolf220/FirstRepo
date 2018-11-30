@@ -6,12 +6,4 @@ function fibonacci(n) {
     }
 }
 
-new_var = function (integer) {
-    // return Math.floor(integer); 
-    
-    return Math.floor.apply(integer); 
-};
-
 console.log(fibonacci(6));
-
-console.log(new_var(3.23)); 

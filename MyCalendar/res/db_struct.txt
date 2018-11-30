@@ -1,0 +1,36 @@
+create table events (
+    id                  serial          primary key ,
+    activity            varchar         not null    ,
+    place               varchar                     ,
+    time_and_date       timestamp       not null    ,
+    details             varchar
+);
+
+create table tasks (
+    id                  serial          primary key ,
+    activity            varchar         not null    ,
+    place               varchar                     ,
+    time_and_date       timestamp       not null    ,
+    details             varchar                     ,
+    priority            integer         not null
+);
+
+create table durable_events (
+    id                  serial          primary key ,
+    activity            varchar         not null    ,
+    place               varchar                     ,
+    time_and_date       timestamp       not null    ,
+    details             varchar                     ,
+    end_time            timestamp       not null
+);
+
+create table conferences (
+    id                  serial          primary key ,
+    activity            varchar         not null    ,
+    place               varchar                     ,
+    time_and_date       timestamp       not null    ,
+    details             varchar                     ,
+    speaker             varchar         not null    ,
+    topic               varchar         not null    ,
+    n_of_attendees      integer
+);

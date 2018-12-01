@@ -11,6 +11,14 @@ import static com.phoenix.Factory.*;
 class Wizards {
     private static Scanner reader = new Scanner(System.in);
 
+
+    static Calendar timeWizard() {
+        System.out.println("Date: hh mm [dd MM YYYY]");
+        String time = reader.nextLine();
+        return Utils.createTime(Utils.lineToTime(time));
+    }
+
+
     static iEvent eventWizard() {
         System.out.println("Activity: ");
         String activity = reader.nextLine();
@@ -18,10 +26,7 @@ class Wizards {
         System.out.println("Place: ");
         String place = reader.nextLine();
 
-        System.out.println("Date: hh mm [dd MM YYYY]");
-        String time = reader.nextLine();
-
-        Calendar date = Utils.createTime(Utils.lineToTime(time));
+        Calendar date = timeWizard();
 
         System.out.println("Details? ");
         String details = reader.nextLine();
@@ -37,7 +42,6 @@ class Wizards {
         String time = reader.nextLine();
 
         Calendar end = Utils.createTime(Utils.lineToTime(time));
-
         return buildEvent(tmp, end);
     }
 
@@ -51,9 +55,6 @@ class Wizards {
 
         return buildTask(tmp, Task.getPriority(Integer.valueOf(priority)));
     }
-
-
-    // TODO: 28/11/18 Write Object version
 
     static iConference conferenceWizard() {
         System.out.println("Speaker of the conference: ");

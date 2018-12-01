@@ -40,11 +40,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String code;
-        do {
+        while (true) {
             printOperations();
-            code = keyboard.nextLine();
+            String code = keyboard.nextLine();
+            if (Integer.valueOf(code) != 0)
+                break;
             choiceCollector(Integer.valueOf(code));
-        } while (Integer.valueOf(code) != 0);
+        }
     }
 }

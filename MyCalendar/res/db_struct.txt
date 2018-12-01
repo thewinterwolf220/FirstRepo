@@ -1,4 +1,5 @@
 create table events (
+    type                integer         default 1   ,
     id                  serial          primary key ,
     activity            varchar         not null    ,
     place               varchar                     ,
@@ -7,6 +8,7 @@ create table events (
 );
 
 create table tasks (
+    type                integer         default 2   ,
     id                  serial          primary key ,
     activity            varchar         not null    ,
     place               varchar                     ,
@@ -16,6 +18,7 @@ create table tasks (
 );
 
 create table durable_events (
+    type                integer         default 3   ,
     id                  serial          primary key ,
     activity            varchar         not null    ,
     place               varchar                     ,
@@ -25,6 +28,7 @@ create table durable_events (
 );
 
 create table conferences (
+    type                integer         default 4   ,
     id                  serial          primary key ,
     activity            varchar         not null    ,
     place               varchar                     ,
@@ -33,4 +37,9 @@ create table conferences (
     speaker             varchar         not null    ,
     topic               varchar         not null    ,
     n_of_attendees      integer
+);
+
+create table types (
+    id                  serial          primary key ,
+    type                varchar         not null
 );

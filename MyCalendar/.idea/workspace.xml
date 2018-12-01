@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24ad0dd5-b990-4f4c-8e6b-149f915390d7" name="Default Changelist" comment="Removed unused imports and unused variables.&#10;Removed redundant comments.&#10; &#10; Introduced variables to manage login, which logic has been improved &#10; &#10; Renamed fetchall for a more significant name.">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="24ad0dd5-b990-4f4c-8e6b-149f915390d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/DatabaseOperator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/Factory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/Wizards.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/iConference.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/iDurableEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/iEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/iTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,6 +15,7 @@
     <session id="1852345030">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -42,49 +32,13 @@
         <counts>
           <entry key="DBN-SQL" value="4" />
           <entry key="JAVA" value="6278" />
-          <entry key="PLAIN_TEXT" value="803" />
+          <entry key="PLAIN_TEXT" value="816" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="229" column="19" selection-start-line="229" selection-start-column="19" selection-end-line="229" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#addEvent#0;class#DatabaseOperator#0" />
-                <element signature="method#addTask#0;class#DatabaseOperator#0" />
-                <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
-                <element signature="method#countEvents#0;class#DatabaseOperator#0" />
-                <element signature="method#countTasks#0;class#DatabaseOperator#0" />
-                <element signature="method#countDurEvents#0;class#DatabaseOperator#0" />
-                <element signature="method#countTables#0;class#DatabaseOperator#0" />
-                <element signature="method#getTables#0;class#DatabaseOperator#0" />
-                <element signature="method#connectToDatabase#0;class#DatabaseOperator#0" />
-                <element signature="method#login#0;class#DatabaseOperator#0" />
-                <element signature="method#main#0;class#DatabaseOperator#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-              <folding>
-                <element signature="method#printOperations#0;class#Main#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -141,31 +95,7 @@
             </path>
             <path>
               <item name="MyCalendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyCalendar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="phoenix" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCalendar" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="MyCalendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="MyCalendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="java.sql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyCalendar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="java.sql" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -177,7 +107,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543679049363" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543679071409" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RunDashboard">
@@ -311,7 +241,21 @@
       <option name="project" value="LOCAL" />
       <updated>1543678716657</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Removed unused imports and unused variables.&#10;Removed redundant comments.&#10; &#10; Introduced variables to manage login, which logic has been improved &#10; &#10; Renamed fetchall for a more significant name.">
+      <created>1543679039900</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1543679039900</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Ignore">
+      <created>1543679091450</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1543679091450</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -325,7 +269,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1919" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Image Layers" />
@@ -334,10 +277,10 @@
       <window_info id="DB Browser" weight="0.32995194" />
       <window_info id="Capture Tool" />
       <window_info id="Learn" weight="0.32995194" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24986653" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24986653" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="DB Execution Console" order="0" />
-      <window_info active="true" anchor="bottom" id="Messages" order="1" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Messages" order="1" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32899022" />
@@ -355,7 +298,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info anchor="right" id="Run" order="8" visible="true" weight="0.32888415" />
+      <window_info anchor="right" id="Run" order="8" weight="0.32888415" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -374,7 +317,11 @@
     <MESSAGE value="Removed unused variable&#10;Fixed a bug that requested the insertion of an end line" />
     <MESSAGE value="Uses a while instead of a do-while" />
     <MESSAGE value="Removed unused imports and unused variables.&#10;Removed redundant comments.&#10; &#10; Introduced variables to manage login, which logic has been improved &#10; &#10; Renamed fetchall for a more significant name." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused imports and unused variables.&#10;Removed redundant comments.&#10; &#10; Introduced variables to manage login, which logic has been improved &#10; &#10; Renamed fetchall for a more significant name." />
+    <MESSAGE value="Ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ignore" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jrt:///usr/lib/jvm/java-1.10.0-openjdk-amd64!/java.sql/java/sql/DatabaseMetaData.class">
@@ -508,16 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-          <folding>
-            <element signature="method#printOperations#0;class#Main#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt:///usr/lib/jvm/java-1.10.0-openjdk-amd64!/java.sql/java/sql/Connection.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -542,6 +479,16 @@
             <element signature="method#connectToDatabase#0;class#DatabaseOperator#0" />
             <element signature="method#login#0;class#DatabaseOperator#0" />
             <element signature="method#main#0;class#DatabaseOperator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+          <folding>
+            <element signature="method#printOperations#0;class#Main#0" />
           </folding>
         </state>
       </provider>

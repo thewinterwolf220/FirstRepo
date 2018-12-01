@@ -1,13 +1,10 @@
 package com.phoenix;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     static Scanner keyboard = new Scanner(System.in);
-
-    private static ArrayList<iEvent> cache = new ArrayList<>(10);
 
     private static void printOperations() {
         System.out.println("1. Add event");
@@ -46,7 +43,7 @@ public class Main {
         String code;
         do {
             printOperations();
-            code = keyboard.next();
+            code = keyboard.nextLine();
             choiceCollector(Integer.valueOf(code));
         } while (Integer.valueOf(code) != 0);
     }

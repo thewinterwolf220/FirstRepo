@@ -15,7 +15,6 @@ public class Main {
         System.out.println("1. Add event");
         System.out.println("2. Add task");
         System.out.println("3. Add long event");
-        System.out.println("4. Add conference");
         System.out.println("5. Show upcoming events");
         System.out.println("0. Exit");
     }
@@ -51,9 +50,6 @@ public class Main {
             printOperations();
             code = keyboard.next();
             choiceCollector(Integer.valueOf(code));
-            cache.sort(Comparator.comparing(iEvent::getCalendar));
         } while (Integer.valueOf(code) != 0);
-
-        Stream.of(cache).forEachOrdered(System.out::println);
     }
 }

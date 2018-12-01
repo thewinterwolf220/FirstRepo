@@ -1,5 +1,6 @@
 package com.phoenix;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
         System.out.println("2. Add task");
         System.out.println("3. Add long event");
         System.out.println("5. Show upcoming events");
+        System.out.println("6. Show events in a date range");
         System.out.println("0. Exit");
     }
 
@@ -33,6 +35,13 @@ public class Main {
                 DatabaseOperator.allFutureEvents().forEach(System.out::println);
                 break;
 
+            case 6:
+                System.out.print("From ");
+                Calendar begin = Wizards.timeWizard();
+                System.out.print("To ");
+                Calendar end = Wizards.timeWizard();
+                DatabaseOperator.eventsBetween(begin, end).forEach(System.out::println);
+                break;
             case 0:
                 System.out.println("Exiting ");
                 break;
@@ -40,12 +49,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        while (true) {
+        String code;
+        do {
             printOperations();
-            String code = keyboard.nextLine();
-            if (Integer.valueOf(code) != 0)
-                break;
+            code = keyboard.nextLine();
             choiceCollector(Integer.valueOf(code));
-        }
+        } while (Integer.valueOf(code) != 0);
     }
 }
+
+

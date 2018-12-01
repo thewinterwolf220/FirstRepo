@@ -8,6 +8,7 @@ import org.postgresql.ds.PGSimpleDataSource;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
@@ -21,9 +22,16 @@ class DatabaseOperator {
 
     // We want their scope to be the whole runtime.
     private static String username = null;
-    private static String password = null; 
+    private static String password = null;
 
+
+    // Test here
+    public static void main(String[] args) {
+        Comparator<iEvent> comparator = Comparator.comparing(iEvent::getCalendar);
+        Stream.of(fetchAll()).forEachOrdered(System.out::println);
+    }
     //-------------------------------------Methods to get stuff --------------------------------------------------------
+
     static void upcoming() {
         if (countEvents() > 0) upcomingEvents();
         else System.out.println("No upcoming events");
@@ -34,13 +42,11 @@ class DatabaseOperator {
         if (countDurEvents() > 0) upcomingDurableEvents();
         else System.out.println("No upcoming events");
 
-
     }
 
 
-    // FIXME: 30/11/18 
     private static List<iEvent> fetchAll() {
-        List<iEvent> eventList = null;
+        List<iEvent> eventList = new ArrayList<>();
 
         try (Connection connection = connectToDatabase()) {
 
@@ -49,27 +55,13 @@ class DatabaseOperator {
                 String select = "SELECT activity, place, time_and_date, details " +
                         "FROM events WHERE time_and_date > clock_timestamp()";
 
-                statement.execute(select);
+                statement.executeQuery(select);
 
                 ResultSet resultSet = statement.getResultSet();
 
-                Stream.of(resultSet)
-                        .peek(i -> eventList.add(Utils.fetchEvent(i)))
-                        .forEach(l -> {
-                            try {
-                                l.next();
-                            } catch (Exception e) {
-                            }
-                        });
-
-                // FIXME: 30/11/18 Remove exception
                 while (resultSet.next()) {
                     iEvent event = Utils.fetchEvent(resultSet);
-                    System.out.println(event);
-                    if (eventList.add(event))
-                        System.out.println("Event added");
-                    else
-                        System.out.println("Not");
+                    eventList.add(event);
                 }
             }
 
@@ -77,10 +69,6 @@ class DatabaseOperator {
             e.printStackTrace();
         }
         return eventList;
-    }
-
-    public static void main(String[] args) {
-
     }
 
     private static void upcomingEvents() {
@@ -91,7 +79,7 @@ class DatabaseOperator {
                 String select = "SELECT activity, place, time_and_date, details " +
                         "FROM events WHERE time_and_date > clock_timestamp()";
 
-                statement.execute(select);
+                statement.executeQuery(select);
                 ResultSet resultSet = statement.getResultSet();
 
                 while (resultSet.next()) {
@@ -111,7 +99,7 @@ class DatabaseOperator {
 
                 String s = "SELECT activity, place, time_and_date, details, priority " +
                         "FROM tasks WHERE time_and_date > clock_timestamp()";
-                statement.execute(s);
+                statement.executeQuery(s);
 
                 ResultSet resultSet = statement.getResultSet();
 
@@ -131,7 +119,7 @@ class DatabaseOperator {
 
                 String s = "SELECT activity, place, time_and_date, details, end_time " +
                         "FROM durable_events WHERE time_and_date > clock_timestamp()";
-                statement.execute(s);
+                statement.executeQuery(s);
 
                 ResultSet resultSet = statement.getResultSet();
 
@@ -155,7 +143,7 @@ class DatabaseOperator {
 
                 String select = "SELECT activity FROM events WHERE time_and_date > clock_timestamp()";
 
-                statement.execute(select);
+                statement.executeQuery(select);
                 count = (int) Stream.of(statement.getResultSet()).count();
             }
         } catch (SQLException e) {
@@ -171,7 +159,7 @@ class DatabaseOperator {
 
                 String select = "SELECT activity FROM tasks WHERE time_and_date > clock_timestamp()";
 
-                statement.execute(select);
+                statement.executeQuery(select);
                 count = (int) Stream.of(statement.getResultSet()).count();
             }
         } catch (SQLException e) {
@@ -187,7 +175,7 @@ class DatabaseOperator {
 
                 String select = "SELECT activity FROM durable_events WHERE time_and_date > clock_timestamp()";
 
-                statement.execute(select);
+                statement.executeQuery(select);
                 count = (int) Stream.of(statement.getResultSet()).count();
             }
         } catch (SQLException e) {

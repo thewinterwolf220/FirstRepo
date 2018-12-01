@@ -21,26 +21,14 @@ class Utils {
         return new Timestamp(timeInMillis);
     }
 
-    @Contract("null -> null")
-    private static Calendar timestampToCalendar(Object obj) {
-        if (!(obj instanceof Timestamp))
-            return null;
-
-        Timestamp newTS = (Timestamp) obj;
-        long timeInMs = newTS.getTime();
-
-        return new Calendar.Builder().setInstant(timeInMs).build();
-    }
-
-
-    static iEvent fetchGeneric(int type, ResultSet set) {
+    static iEvent fetchGeneric(String tableName, ResultSet set) {
         try {
-            switch (type) {
-                case 1:
+            switch (tableName) {
+                case "events":
                     return fetchEvent(set);
-                case 2:
+                case "tasks":
                     return fetchTask(set);
-                case 3:
+                case "durable_events":
                     return fetchDurableEvent(set);
                 default:
                     throw new UnsupportedOperationException();
@@ -51,9 +39,7 @@ class Utils {
         }
     }
 
-    @NotNull
-    @Contract("_ -> new")
-    static iEvent fetchEvent(@NotNull ResultSet resultSet) throws SQLException {
+    private static iEvent fetchEvent(@NotNull ResultSet resultSet) throws SQLException {
         String activity = resultSet.getString(1);
         String place = resultSet.getString(2);
         Calendar date = timestampToCalendar(resultSet.getTimestamp(3));
@@ -62,11 +48,7 @@ class Utils {
         return new iEvent(activity, place, date, details);
     }
 
-    // TODO: 29/11/18 reuse code common to fetchEvent and fetchTask
-
-    @NotNull
-    @Contract("_ -> new")
-    static iTask fetchTask(@NotNull ResultSet resultSet) throws SQLException {
+    private static iTask fetchTask(@NotNull ResultSet resultSet) throws SQLException {
         String activity = resultSet.getString(1);
         String place = resultSet.getString(2);
         Calendar date = timestampToCalendar(resultSet.getTimestamp(3));
@@ -77,7 +59,7 @@ class Utils {
         return new iTask(activity, place, date, details, priority);
     }
 
-    static iDurableEvent fetchDurableEvent(@NotNull ResultSet resultSet) throws SQLException {
+    private static iDurableEvent fetchDurableEvent(@NotNull ResultSet resultSet) throws SQLException {
         String activity = resultSet.getString(1);
         String place = resultSet.getString(2);
         Calendar date = timestampToCalendar(resultSet.getTimestamp(3));
@@ -87,5 +69,16 @@ class Utils {
         return new iDurableEvent(activity, place, date, details, endTime);
     }
 
+
+    @Contract("null -> null")
+    private static Calendar timestampToCalendar(Object obj) {
+        if (!(obj instanceof Timestamp))
+            return null;
+
+        Timestamp newTS = (Timestamp) obj;
+        long timeInMs = newTS.getTime();
+
+        return new Calendar.Builder().setInstant(timeInMs).build();
+    }
 
 }

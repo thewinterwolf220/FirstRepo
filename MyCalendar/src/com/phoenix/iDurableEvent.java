@@ -29,7 +29,7 @@ public class iDurableEvent extends iEvent implements DurableEvent {
     @Override
     public String toString() {
         return super.toString()
-                + "Ends: " + timeAsString(endTime) + "\n"
+                + " -> " + timeAsString(endTime) + "\n"
                 + "Lasts:" + lasts();
     }
 

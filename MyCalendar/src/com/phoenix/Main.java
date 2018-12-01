@@ -1,9 +1,7 @@
 package com.phoenix;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class Main {
 
@@ -35,7 +33,7 @@ public class Main {
                 break;
 
             case 5:
-                DatabaseOperator.upcoming();
+                DatabaseOperator.allFutureEvents().forEach(System.out::println);
                 break;
 
             case 0:

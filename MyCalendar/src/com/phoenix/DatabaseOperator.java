@@ -5,6 +5,7 @@ import org.postgresql.ds.PGSimpleDataSource;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -17,6 +18,35 @@ class DatabaseOperator {
     private static String username = null;
     private static String password = null;
     private static boolean logged = false;
+
+
+    static List<iEvent> eventsBetween(Calendar begin, Calendar end) {
+        List<iEvent> all = new ArrayList<>();
+
+        Timestamp begin_ts = Utils.calendarToTimestamp(begin);
+        Timestamp end_ts = Utils.calendarToTimestamp(end);
+        String[] tables = getTables().toArray(new String[]{});
+
+        try (Connection connection = connectToDatabase()) {
+            for (String table : tables) {
+
+                String query = betweenStatement(table) + "'" + begin_ts + "'" + " AND " + "'" + end_ts + "'";
+
+                try (Statement statement = connection.createStatement()) {
+                    statement.executeQuery(query);
+                    ResultSet set = statement.getResultSet();
+                    while (set.next()) {
+                        iEvent fetched = Utils.fetchGeneric(table, set);
+                        all.add(fetched);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        all.sort(Comparator.comparing(iEvent::getCalendar));
+        return all;
+    }
 
     static List<iEvent> allFutureEvents() {
         List<iEvent> all = new ArrayList<>();
@@ -231,6 +261,23 @@ class DatabaseOperator {
         }
     }
 
+
+    private static String betweenStatement(String table) {
+        switch (table) {
+            case "events":
+                return "SELECT activity, place, time_and_date, details FROM events " +
+                        "WHERE time_and_date BETWEEN ";
+            case "durable_events":
+                return "SELECT activity, place, time_and_date, details, end_time FROM durable_events " +
+                        "WHERE time_and_date BETWEEN ";
+            case "tasks":
+                return "SELECT activity, place, time_and_date, details, priority FROM tasks " +
+                        "WHERE time_and_date BETWEEN ";
+            default:
+                throw new UnsupportedOperationException();
+        }
+    }
+
     private static Connection connectToDatabase() {
         source.setServerName("localhost");
         source.setDatabaseName("calendar");
@@ -266,12 +313,6 @@ class DatabaseOperator {
 
         source.setUser(username);
         source.setPassword(password);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(logged ? "Logged" : "Not logged");
-        connectToDatabase();
-        System.out.println(logged ? "Logged" : "Not logged");
     }
 
 }

@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 class Utils {
@@ -23,7 +22,7 @@ class Utils {
     }
 
     @Contract("null -> null")
-    static Calendar timestampToCalendar(Object obj) {
+    private static Calendar timestampToCalendar(Object obj) {
         if (!(obj instanceof Timestamp))
             return null;
 
@@ -33,21 +32,34 @@ class Utils {
         return new Calendar.Builder().setInstant(timeInMs).build();
     }
 
-    @NotNull
-    @Contract("_ -> new")
-    static iEvent fetchEvent(@NotNull ResultSet resultSet) {
-        try {
-            String activity = resultSet.getString(1);
-            String place = resultSet.getString(2);
-            Calendar date = timestampToCalendar(resultSet.getTimestamp(3));
-            String details = resultSet.getString(4);
 
-            return new iEvent(activity, place, date, details);
+    static iEvent fetchGeneric(int type, ResultSet set) {
+        try {
+            switch (type) {
+                case 1:
+                    return fetchEvent(set);
+                case 2:
+                    return fetchTask(set);
+                case 3:
+                    return fetchDurableEvent(set);
+                default:
+                    throw new UnsupportedOperationException();
+            }
         } catch (SQLException e) {
-            System.out.println("Exception in fetchEvent");
             e.printStackTrace();
             return null;
         }
+    }
+
+    @NotNull
+    @Contract("_ -> new")
+    static iEvent fetchEvent(@NotNull ResultSet resultSet) throws SQLException {
+        String activity = resultSet.getString(1);
+        String place = resultSet.getString(2);
+        Calendar date = timestampToCalendar(resultSet.getTimestamp(3));
+        String details = resultSet.getString(4);
+
+        return new iEvent(activity, place, date, details);
     }
 
     // TODO: 29/11/18 reuse code common to fetchEvent and fetchTask
@@ -66,7 +78,6 @@ class Utils {
     }
 
     static iDurableEvent fetchDurableEvent(@NotNull ResultSet resultSet) throws SQLException {
-
         String activity = resultSet.getString(1);
         String place = resultSet.getString(2);
         Calendar date = timestampToCalendar(resultSet.getTimestamp(3));

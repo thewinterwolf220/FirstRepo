@@ -48,6 +48,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        DatabaseOperator.establishConnection();
         String code;
         do {
             printOperations();

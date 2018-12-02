@@ -3,7 +3,6 @@ package com.phoenix;
 import com.phoenix.calendar.api.Task;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
 import org.postgresql.ds.PGSimpleDataSource;
 
@@ -18,66 +17,74 @@ import static com.phoenix.Utils.calendarToTimestamp;
 import static com.phoenix.calendar.api.Utils.createTime;
 
 class DatabaseOperator {
-    private static final int MAX_ATTEMPTS = 3;
     private static PGSimpleDataSource source = new PGSimpleDataSource();
     private static Connection connection;
-    private static int attempts = 0;
     private static String username = null;
     private static String password = null;
     private static boolean loggedIn = false;
-
 
     static List<iEvent> eventsBetween(Calendar begin, Calendar end) {
         List<iEvent> all = new ArrayList<>();
 
         Timestamp begin_ts = calendarToTimestamp(begin);
         Timestamp end_ts = calendarToTimestamp(end);
+
         String[] tables = getTables().toArray(new String[]{});
 
-        try (Connection connection = connectToDatabase()) {
-            for (String table : tables) {
+        for (String table : tables) {
 
-                String query = selectBetween(table) + "'" + begin_ts + "'" + " AND " + "'" + end_ts + "'";
+            String query = selectBetween(table) + "'" + begin_ts + "'" + " AND " + "'" + end_ts + "'";
 
-                assert connection != null;
-                try (Statement statement = connection.createStatement()) {
-                    statement.executeQuery(query);
-                    ResultSet set = statement.getResultSet();
-                    while (set.next()) {
-                        iEvent fetched = Utils.fetchGeneric(table, set);
-                        all.add(fetched);
-                    }
+            try (Statement statement = connection.createStatement()) {
+                statement.executeQuery(query);
+                ResultSet set = statement.getResultSet();
+
+                while (set.next()) {
+                    iEvent fetched = Utils.fetchGeneric(table, set);
+                    all.add(fetched);
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
         all.sort(Comparator.comparing(iEvent::getCalendar));
         return all;
     }
 
+    static void establishConnection() {
+        assert connection == null;
+
+        if (!loggedIn) login();
+        configureDatabaseConnection();
+
+        try {
+            connection = source.getConnection();
+            loggedIn = true;
+        } catch (SQLException e) {
+            System.exit(1);
+        }
+
+    }
+
     static List<iEvent> allFutureEvents() {
         List<iEvent> all = new ArrayList<>();
-
         String[] tables = getTables().toArray(new String[]{});
 
-        try (Connection connection = connectToDatabase()) {
-            for (String table : tables) {
+        for (String table : tables) {
 
-                String query = selectFutureEvent(table);
+            String query = selectFutureEvent(table);
 
-                assert connection != null;
-                try (Statement statement = connection.createStatement()) {
-                    statement.executeQuery(query);
-                    ResultSet set = statement.getResultSet();
-                    while (set.next()) {
-                        iEvent fetched = Utils.fetchGeneric(table, set);
-                        all.add(fetched);
-                    }
+            try (Statement statement = connection.createStatement()) {
+                statement.executeQuery(query);
+                ResultSet set = statement.getResultSet();
+                while (set.next()) {
+                    iEvent fetched = Utils.fetchGeneric(table, set);
+                    all.add(fetched);
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         all.sort(Comparator.comparing(iEvent::getCalendar));
         return all;
@@ -93,20 +100,17 @@ class DatabaseOperator {
 
         Timestamp timeOfEvent = calendarToTimestamp(attributes.get(2));
 
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
-            try (Statement statement = connection.createStatement()) {
+        try (Statement statement = connection.createStatement()) {
 
-                String insert = "INSERT INTO events(activity, place, time_and_date, details) VALUES " +
-                        "(" +
-                        "'" + attributes.get(0) + "'," +
-                        "'" + attributes.get(1) + "'," +
-                        "'" + timeOfEvent + "'," +
-                        "'" + attributes.get(3) + "'" +
-                        ")";
-                statement.execute(insert);
-                return true;
-            }
+            String insert = "INSERT INTO events(activity, place, time_and_date, details) VALUES " +
+                    "(" +
+                    "'" + attributes.get(0) + "'," +
+                    "'" + attributes.get(1) + "'," +
+                    "'" + timeOfEvent + "'," +
+                    "'" + attributes.get(3) + "'" +
+                    ")";
+            statement.execute(insert);
+            return true;
         } catch (Exception exx) {
             return false;
         }
@@ -121,22 +125,20 @@ class DatabaseOperator {
         //Don't be scared, it's just a cast operation.
         int priority = ((Task.Priority) attributes.get(4)).getImportance();
 
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
-            try (Statement statement = connection.createStatement()) {
+        try (Statement statement = connection.createStatement()) {
 
-                String insert = "INSERT INTO tasks(activity, place, time_and_date, details, priority) VALUES" +
-                        "( " +
-                        "'" + attributes.get(0) + "'," +
-                        "'" + attributes.get(1) + "'," +
-                        "'" + timeOfEvent + "'," +
-                        "'" + attributes.get(3) + "'," +
-                        "'" + priority + "'" +
-                        ")";
+            String insert = "INSERT INTO tasks(activity, place, time_and_date, details, priority) VALUES" +
+                    "( " +
+                    "'" + attributes.get(0) + "'," +
+                    "'" + attributes.get(1) + "'," +
+                    "'" + timeOfEvent + "'," +
+                    "'" + attributes.get(3) + "'," +
+                    "'" + priority + "'" +
+                    ")";
 
-                statement.execute(insert);
-                return true;
-            }
+            statement.execute(insert);
+            return true;
+
         } catch (Exception exx) {
             return false;
         }
@@ -148,21 +150,18 @@ class DatabaseOperator {
         Timestamp timeOfEvent = calendarToTimestamp(attributes.get(2));
         Timestamp endOfEvent = calendarToTimestamp(attributes.get(4));
 
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
-            try (Statement statement = connection.createStatement()) {
+        try (Statement statement = connection.createStatement()) {
 
-                String insert = "INSERT INTO durable_events(activity, place, time_and_date, details, end_time) VALUES" +
-                        "( " +
-                        "'" + attributes.get(0) + "'," +
-                        "'" + attributes.get(1) + "'," +
-                        "'" + timeOfEvent + "'," +
-                        "'" + attributes.get(3) + "'," +
-                        "'" + endOfEvent + "'" +
-                        ")";
-                statement.execute(insert);
-                return true;
-            }
+            String insert = "INSERT INTO durable_events(activity, place, time_and_date, details, end_time) VALUES" +
+                    "( " +
+                    "'" + attributes.get(0) + "'," +
+                    "'" + attributes.get(1) + "'," +
+                    "'" + timeOfEvent + "'," +
+                    "'" + attributes.get(3) + "'," +
+                    "'" + endOfEvent + "'" +
+                    ")";
+            statement.execute(insert);
+            return true;
         } catch (Exception exx) {
             return false;
         }
@@ -171,21 +170,17 @@ class DatabaseOperator {
     private static boolean addPreparedEvent() {
         Object[] attributes = Wizards.eventWizard().getAttributes().toArray();
 
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
+        String sql = "INSERT INTO events(activity, place, time_and_date, details) VALUES(?, ?, ?, ?)";
 
-            String sql = "INSERT INTO events(activity, place, time_and_date, details) VALUES(?, ?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, (String) attributes[0]);
+            statement.setString(2, (String) attributes[1]);
+            statement.setTimestamp(3, calendarToTimestamp(attributes[2]));
+            statement.setString(4, (String) attributes[3]);
 
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, (String) attributes[0]);
-                statement.setString(2, (String) attributes[1]);
-                statement.setTimestamp(3, calendarToTimestamp(attributes[2]));
-                statement.setString(4, (String) attributes[3]);
-
-                int count = statement.executeUpdate();
-                System.out.println(count);
-                return statement.execute();
-            }
+            int count = statement.executeUpdate();
+            System.out.println(count);
+            return statement.execute();
         } catch (Exception exx) {
             return false;
         }
@@ -195,14 +190,11 @@ class DatabaseOperator {
     private static void test_speed_prepared_and_not() {
         long start = System.currentTimeMillis();
 
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
-            String sql = "INSERT INTO events(activity,time_and_date) VALUES(?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, "Event1");
-                statement.setTimestamp(2, calendarToTimestamp(createTime(18, 0)));
-                statement.execute();
-            }
+        String sql = "INSERT INTO events(activity,time_and_date) VALUES(?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, "Event1");
+            statement.setTimestamp(2, calendarToTimestamp(createTime(18, 0)));
+            statement.execute();
         } catch (Exception exx) {
             System.out.println("Problem here");
         }
@@ -214,13 +206,10 @@ class DatabaseOperator {
 
 
         start = System.currentTimeMillis();
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
-            try (Statement statement = connection.createStatement()) {
-                String insert = "INSERT INTO events(activity, time_and_date) VALUES " +
-                        "('Event2', '2018-12-2 18:00')";
-                statement.execute(insert);
-            }
+        try (Statement statement = connection.createStatement()) {
+            String insert = "INSERT INTO events(activity, time_and_date) VALUES " +
+                    "('Event2', '2018-12-2 18:00')";
+            statement.execute(insert);
         } catch (Exception exx) {
             System.out.println("Problem here");
         }
@@ -230,22 +219,14 @@ class DatabaseOperator {
         System.out.println("Elapsed when using a statement: " + elapsed);
     }
 
-    public static void main(String[] args) {
-        test_speed_prepared_and_not();
-    }
-
     private static int countTables() {
         int count = 0;
-        try (Connection connection = connectToDatabase()) {
-
-            assert connection != null;
-
+        try {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet res = metaData.getTables(null, null, null, new String[]{"TABLE"});
 
             while (res.next())
                 count++;
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -254,11 +235,7 @@ class DatabaseOperator {
 
     private static List<String> getTables() {
         List<String> tables = new ArrayList<>(countTables());
-
-        try (Connection connection = connectToDatabase()) {
-
-            assert connection != null;
-
+        try {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet res = metaData.getTables(null, null, null, new String[]{"TABLE"});
 
@@ -307,63 +284,37 @@ class DatabaseOperator {
         }
     }
 
-    @Nullable
-    private static Connection connectToDatabase() {
+    // Just to learn new things, metadata and other stuff.
+    private static void getCols(@NotNull String table) {
+        List<String> columns = new ArrayList<>();
+        try (Statement statement = connection.createStatement()) {
+
+            statement.executeQuery("SELECT * FROM " + table);
+
+            ResultSet resultSetMetaData = statement.getResultSet();
+            ResultSetMetaData r = resultSetMetaData.getMetaData();
+
+            for (int i = 1; i <= r.getColumnCount(); i++)
+                columns.add(r.getColumnName(i));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(columns.stream().collect(Collectors.joining(", ", "{", "}")));
+    }
+
+
+    private static void configureDatabaseConnection() {
+        source.setUser(username);
+        source.setPassword(password);
         source.setServerName("localhost");
         source.setDatabaseName("calendar");
-
-        if (loggedIn) { // Reuses username and password previously inserted
-            source.setUser(username);
-            source.setPassword(password);
-        } else login();
-
-        try {
-            loggedIn = true;
-            return source.getConnection();
-        } catch (SQLException e) {
-            attempts++;
-            loggedIn = false;
-            System.out.println("Wrong credentials, retry.");
-
-            if (attempts >= MAX_ATTEMPTS) {
-                System.out.println("You can't retry");
-                return null;
-            }
-
-            return connectToDatabase();
-        }
     }
 
     private static void login() {
         System.out.println("User ");
         username = Main.keyboard.nextLine();
-
         System.out.println("Password: ");
         password = Main.keyboard.nextLine();
-
-        source.setUser(username);
-        source.setPassword(password);
-    }
-
-    // Just to learn new things, metadata and other stuff.
-    private static void getCols(@NotNull String table) {
-        List<String> columns = new ArrayList<>();
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
-            try (Statement statement = connection.createStatement()) {
-
-                statement.executeQuery("SELECT * FROM " + table);
-
-                ResultSet resultSetMetaData = statement.getResultSet();
-                ResultSetMetaData r = resultSetMetaData.getMetaData();
-
-                for (int i = 1; i <= r.getColumnCount(); i++)
-                    columns.add(r.getColumnName(i));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println(columns.stream().collect(Collectors.joining(", ", "{", "}")));
     }
 
 }

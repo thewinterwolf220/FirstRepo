@@ -36,10 +36,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="DBN-SQL" value="4" />
-          <entry key="JAVA" value="8065" />
+          <entry key="DBN-SQL" value="5" />
+          <entry key="JAVA" value="9242" />
           <entry key="Kotlin" value="15" />
-          <entry key="PLAIN_TEXT" value="1188" />
+          <entry key="PLAIN_TEXT" value="1250" />
         </counts>
       </usages-collector>
     </session>
@@ -49,11 +49,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+            <state relative-caret-position="378">
+              <caret line="167" column="30" lean-forward="true" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
+                <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
+                <element signature="e#2570#2669#0" />
+                <element signature="method#PREPAREDEvent#0;class#DatabaseOperator#0" />
+                <element signature="e#6292#6293#0" expanded="true" />
+                <element signature="e#6337#6338#0" expanded="true" />
+                <element signature="method#addTask#0;class#DatabaseOperator#0" />
+                <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
                 <element signature="sql_statement#0#161" />
                 <element signature="method#countTables#0;class#DatabaseOperator#0" />
                 <element signature="method#getTables#0;class#DatabaseOperator#0" />
@@ -61,8 +68,8 @@
                 <element signature="method#selectBetween#0;class#DatabaseOperator#0" />
                 <element signature="method#connectToDatabase#0;class#DatabaseOperator#0" />
                 <element signature="method#login#0;class#DatabaseOperator#0" />
-                <element signature="e#10247#10248#0" expanded="true" />
-                <element signature="e#10279#10280#0" expanded="true" />
+                <element signature="method#getCols#0;class#DatabaseOperator#0" />
+                <element signature="e#10491#10493#0" />
               </folding>
             </state>
           </provider>
@@ -113,7 +120,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="24" />
-    <option name="width" value="1095" />
+    <option name="width" value="1253" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -155,7 +162,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543746084513" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543751057192" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -173,7 +180,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.DatabaseOperator">
     <configuration name="DatabaseOperator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.phoenix.DatabaseOperator" />
       <module name="MyCalendar" />
@@ -206,8 +213,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.DatabaseOperator" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -355,7 +362,21 @@
       <option name="project" value="LOCAL" />
       <updated>1543745938927</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Removed NullPointerException using an assert statement">
+      <created>1543746108753</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1543746108753</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Ignore">
+      <created>1543746121336</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1543746121336</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -368,7 +389,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1095" height="1055" extended-state="0" />
+    <frame x="0" y="24" width="1253" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.18970448" />
@@ -391,7 +412,7 @@
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="11" visible="true" weight="0.20738328" />
+      <window_info active="true" anchor="bottom" id="Run" order="11" visible="true" weight="0.23235613" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
@@ -428,14 +449,15 @@
     <MESSAGE value="Removed unused variable&#10;Fixed a bug that requested the insertion of an end line" />
     <MESSAGE value="Uses a while instead of a do-while" />
     <MESSAGE value="Removed unused imports and unused variables.&#10;Removed redundant comments.&#10; &#10; Introduced variables to manage login, which logic has been improved &#10; &#10; Renamed fetchall for a more significant name." />
-    <MESSAGE value="Ignore" />
     <MESSAGE value="Refactored and added new useful method" />
     <MESSAGE value="Restore do while and enabled event filtering" />
     <MESSAGE value="Created function that allows to filter events in a range.&#10;Created an auxiliary function" />
     <MESSAGE value="Tidy up and rename" />
     <MESSAGE value="Removed kotlin library" />
     <MESSAGE value="Improved login logic, added method to study db metadata" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved login logic, added method to study db metadata" />
+    <MESSAGE value="Removed NullPointerException using an assert statement" />
+    <MESSAGE value="Ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ignore" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -565,11 +587,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+        <state relative-caret-position="378">
+          <caret line="167" column="30" lean-forward="true" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
+            <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
+            <element signature="e#2570#2669#0" />
+            <element signature="method#PREPAREDEvent#0;class#DatabaseOperator#0" />
+            <element signature="e#6292#6293#0" expanded="true" />
+            <element signature="e#6337#6338#0" expanded="true" />
+            <element signature="method#addTask#0;class#DatabaseOperator#0" />
+            <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
             <element signature="sql_statement#0#161" />
             <element signature="method#countTables#0;class#DatabaseOperator#0" />
             <element signature="method#getTables#0;class#DatabaseOperator#0" />
@@ -577,8 +606,8 @@
             <element signature="method#selectBetween#0;class#DatabaseOperator#0" />
             <element signature="method#connectToDatabase#0;class#DatabaseOperator#0" />
             <element signature="method#login#0;class#DatabaseOperator#0" />
-            <element signature="e#10247#10248#0" expanded="true" />
-            <element signature="e#10279#10280#0" expanded="true" />
+            <element signature="method#getCols#0;class#DatabaseOperator#0" />
+            <element signature="e#10491#10493#0" />
           </folding>
         </state>
       </provider>

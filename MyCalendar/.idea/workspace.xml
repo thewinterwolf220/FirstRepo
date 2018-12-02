@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24ad0dd5-b990-4f4c-8e6b-149f915390d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+    <list default="true" id="24ad0dd5-b990-4f4c-8e6b-149f915390d7" name="Default Changelist" comment="Updated calendar api.&#10;Refactored.&#10;Now it's possible to only write 'X' to create 'X:00 [current date]'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api.calendar@1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/apicalendar@1.2.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/Wizards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/Wizards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/iConference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/iConference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/iDurableEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/iDurableEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/iEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/iEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/iTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/iTask.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,30 +27,32 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="5" />
+          <entry key="CLASS" value="6" />
           <entry key="DBN-SQL" value="5" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="50" />
+          <entry key="JAVA" value="53" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="DBN-SQL" value="5" />
-          <entry key="JAVA" value="9570" />
+          <entry key="DBN-SQL" value="6" />
+          <entry key="JAVA" value="11435" />
           <entry key="Kotlin" value="15" />
-          <entry key="PLAIN_TEXT" value="1296" />
+          <entry key="PLAIN_TEXT" value="1693" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="281" />
+          <entry key="java" value="2146" />
+          <entry key="sql" value="1" />
+          <entry key="txt" value="397" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="1" />
-          <entry key="java" value="11" />
+          <entry key="class" value="2" />
+          <entry key="java" value="14" />
         </counts>
       </usages-collector>
     </session>
@@ -68,16 +60,28 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/phoenix/Wizards.java">
+        <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="229">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
-                <element signature="method#timeWizard#0;class#Wizards#0" />
-                <element signature="method#eventWizard#0;class#Wizards#0" />
-                <element signature="method#durableEventWizard#0;class#Wizards#0" />
-                <element signature="method#taskWizard#0;class#Wizards#0" />
-                <element signature="method#conferenceWizard#0;class#Wizards#0" />
+                <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
+                <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
+                <element signature="method#addEvent#0;class#DatabaseOperator#0" />
+                <element signature="method#addTask#0;class#DatabaseOperator#0" />
+                <element signature="sql_statement#0#152" />
+                <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
+                <element signature="method#addPreparedEvent#0;class#DatabaseOperator#0" />
+                <element signature="method#countTables#0;class#DatabaseOperator#0" />
+                <element signature="method#getTables#0;class#DatabaseOperator#0" />
+                <element signature="e#9814#9822#0" />
+                <element signature="method#selectFutureEvent#0;class#DatabaseOperator#0" />
+                <element signature="e#10622#10630#0" />
+                <element signature="method#selectBetween#0;class#DatabaseOperator#0" />
+                <element signature="method#getCols#0;class#DatabaseOperator#0" />
+                <element signature="method#configureDatabaseConnection#0;class#DatabaseOperator#0" />
+                <element signature="method#login#0;class#DatabaseOperator#0" />
+                <element signature="method#test_speed_prepared_and_not#0;class#DatabaseOperator#0" />
               </folding>
             </state>
           </provider>
@@ -122,17 +126,18 @@
         <option value="$PROJECT_DIR$/src/com/phoenix/iTask.java" />
         <option value="$PROJECT_DIR$/src/com/phoenix/iDurableEvent.java" />
         <option value="$PROJECT_DIR$/src/com/phoenix/iConference.java" />
-        <option value="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" />
         <option value="$PROJECT_DIR$/src/com/phoenix/Utils.java" />
-        <option value="$PROJECT_DIR$/src/com/phoenix/Main.java" />
         <option value="$PROJECT_DIR$/src/com/phoenix/Wizards.java" />
+        <option value="$PROJECT_DIR$/src/com/phoenix/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
-    <option name="width" value="1253" />
-    <option name="height" value="1055" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="20" />
+    <option name="y" value="26" />
+    <option name="width" value="1346" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -173,7 +178,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543761261069" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543767089131" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -395,7 +400,42 @@
       <option name="project" value="LOCAL" />
       <updated>1543751135583</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Updated calendar api.&#10;Refactored.&#10;Now it's possible to only write 'X' to create 'X:00 [current date]'">
+      <created>1543761464674</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1543761464674</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fixed login">
+      <created>1543763333881</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1543763333881</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Now the connection needs to be established only when the program is &#10;started">
+      <created>1543766675161</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1543766675161</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Now connection is established only once">
+      <created>1543766756685</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1543766756685</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Changed logic of the login. &#10;Now the connection is a static variable, so it lasts for the whole &#10;runtime">
+      <created>1543766802027</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1543766802027</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -421,7 +461,7 @@
       <window_info id="DB Browser" order="7" weight="0.32983795" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="DB Execution Console" order="0" />
-      <window_info active="true" anchor="bottom" id="Messages" order="1" visible="true" weight="0.32784185" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.32784185" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32899022" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32784185" />
@@ -431,7 +471,6 @@
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="11" weight="0.23235613" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
@@ -440,6 +479,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
+      <window_info anchor="right" id="Run" order="8" weight="0.28787878" />
     </layout>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -456,8 +496,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed a bug" />
-    <MESSAGE value="New structure" />
     <MESSAGE value="Added method to allow more flexibility" />
     <MESSAGE value="Now fetchGeneric works" />
     <MESSAGE value="Fixed output" />
@@ -477,7 +515,13 @@
     <MESSAGE value="Removed NullPointerException using an assert statement" />
     <MESSAGE value="Ignore" />
     <MESSAGE value="Created test to compare performance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created test to compare performance" />
+    <MESSAGE value="Updated calendar api.&#10;Refactored." />
+    <MESSAGE value="Updated calendar api.&#10;Refactored.&#10;Now it's possible to only write 'X' to create 'X:00 [current date]'" />
+    <MESSAGE value="Fixed login" />
+    <MESSAGE value="Now the connection needs to be established only when the program is &#10;started" />
+    <MESSAGE value="Now connection is established only once" />
+    <MESSAGE value="Changed logic of the login. &#10;Now the connection is a static variable, so it lasts for the whole &#10;runtime" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed logic of the login. &#10;Now the connection is a static variable, so it lasts for the whole &#10;runtime" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -609,31 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding>
-            <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
-            <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
-            <element signature="method#addEvent#0;class#DatabaseOperator#0" />
-            <element signature="sql_statement#0#128" />
-            <element signature="method#addTask#0;class#DatabaseOperator#0" />
-            <element signature="sql_statement#0#152" />
-            <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
-            <element signature="method#addPreparedEvent#0;class#DatabaseOperator#0" />
-            <element signature="method#test_speed_prepared_and_not#0;class#DatabaseOperator#0" />
-            <element signature="method#countTables#0;class#DatabaseOperator#0" />
-            <element signature="method#getTables#0;class#DatabaseOperator#0" />
-            <element signature="method#selectFutureEvent#0;class#DatabaseOperator#0" />
-            <element signature="method#selectBetween#0;class#DatabaseOperator#0" />
-            <element signature="method#connectToDatabase#0;class#DatabaseOperator#0" />
-            <element signature="method#login#0;class#DatabaseOperator#0" />
-            <element signature="method#getCols#0;class#DatabaseOperator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phoenix/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -645,19 +664,6 @@
             <element signature="method#fetchTask#0;class#Utils#0" />
             <element signature="method#fetchDurableEvent#0;class#Utils#0" />
             <element signature="method#timestampToCalendar#0;class#Utils#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#printOperations#0;class#Main#0" />
-            <element signature="method#choiceCollector#0;class#Main#0" />
-            <element signature="method#main#0;class#Main#0" />
           </folding>
         </state>
       </provider>
@@ -679,6 +685,51 @@
             <element signature="method#durableEventWizard#0;class#Wizards#0" />
             <element signature="method#taskWizard#0;class#Wizards#0" />
             <element signature="method#conferenceWizard#0;class#Wizards#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/annotations-16.0.2.jar!/org/jetbrains/annotations/TestOnly.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#printOperations#0;class#Main#0" />
+            <element signature="method#choiceCollector#0;class#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
+            <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
+            <element signature="method#addEvent#0;class#DatabaseOperator#0" />
+            <element signature="method#addTask#0;class#DatabaseOperator#0" />
+            <element signature="sql_statement#0#152" />
+            <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
+            <element signature="method#addPreparedEvent#0;class#DatabaseOperator#0" />
+            <element signature="method#countTables#0;class#DatabaseOperator#0" />
+            <element signature="method#getTables#0;class#DatabaseOperator#0" />
+            <element signature="e#9814#9822#0" />
+            <element signature="method#selectFutureEvent#0;class#DatabaseOperator#0" />
+            <element signature="e#10622#10630#0" />
+            <element signature="method#selectBetween#0;class#DatabaseOperator#0" />
+            <element signature="method#getCols#0;class#DatabaseOperator#0" />
+            <element signature="method#configureDatabaseConnection#0;class#DatabaseOperator#0" />
+            <element signature="method#login#0;class#DatabaseOperator#0" />
+            <element signature="method#test_speed_prepared_and_not#0;class#DatabaseOperator#0" />
           </folding>
         </state>
       </provider>

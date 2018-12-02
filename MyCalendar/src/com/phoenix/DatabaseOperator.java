@@ -23,6 +23,20 @@ class DatabaseOperator {
     private static String password = null;
     private static boolean loggedIn = false;
 
+    static void establishConnection() {
+        if (loggedIn) return;
+
+        login();
+        configureDatabaseConnection();
+
+        try {
+            connection = source.getConnection();
+            loggedIn = true;
+        } catch (SQLException e) {
+            System.exit(1);
+        }
+    }
+
     static List<iEvent> eventsBetween(Calendar begin, Calendar end) {
         List<iEvent> all = new ArrayList<>();
 
@@ -50,21 +64,6 @@ class DatabaseOperator {
 
         all.sort(Comparator.comparing(iEvent::getCalendar));
         return all;
-    }
-
-    static void establishConnection() {
-        assert connection == null;
-
-        if (!loggedIn) login();
-        configureDatabaseConnection();
-
-        try {
-            connection = source.getConnection();
-            loggedIn = true;
-        } catch (SQLException e) {
-            System.exit(1);
-        }
-
     }
 
     static List<iEvent> allFutureEvents() {
@@ -186,39 +185,6 @@ class DatabaseOperator {
         }
     }
 
-    @TestOnly
-    private static void test_speed_prepared_and_not() {
-        long start = System.currentTimeMillis();
-
-        String sql = "INSERT INTO events(activity,time_and_date) VALUES(?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, "Event1");
-            statement.setTimestamp(2, calendarToTimestamp(createTime(18, 0)));
-            statement.execute();
-        } catch (Exception exx) {
-            System.out.println("Problem here");
-        }
-
-        long stop = System.currentTimeMillis();
-        long elapsed = stop - start;
-
-        System.out.println("Elapsed when using a prepared statement: " + elapsed);
-
-
-        start = System.currentTimeMillis();
-        try (Statement statement = connection.createStatement()) {
-            String insert = "INSERT INTO events(activity, time_and_date) VALUES " +
-                    "('Event2', '2018-12-2 18:00')";
-            statement.execute(insert);
-        } catch (Exception exx) {
-            System.out.println("Problem here");
-        }
-        stop = System.currentTimeMillis();
-        elapsed = stop - start;
-
-        System.out.println("Elapsed when using a statement: " + elapsed);
-    }
-
     private static int countTables() {
         int count = 0;
         try {
@@ -302,14 +268,12 @@ class DatabaseOperator {
         System.out.println(columns.stream().collect(Collectors.joining(", ", "{", "}")));
     }
 
-
     private static void configureDatabaseConnection() {
         source.setUser(username);
         source.setPassword(password);
         source.setServerName("localhost");
         source.setDatabaseName("calendar");
     }
-
     private static void login() {
         System.out.println("User ");
         username = Main.keyboard.nextLine();
@@ -317,5 +281,37 @@ class DatabaseOperator {
         password = Main.keyboard.nextLine();
     }
 
+    @TestOnly
+    private static void test_speed_prepared_and_not() {
+        long start = System.currentTimeMillis();
+
+        String sql = "INSERT INTO events(activity,time_and_date) VALUES(?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, "Event1");
+            statement.setTimestamp(2, calendarToTimestamp(createTime(18, 0)));
+            statement.execute();
+        } catch (Exception exx) {
+            System.out.println("Problem here");
+        }
+
+        long stop = System.currentTimeMillis();
+        long elapsed = stop - start;
+
+        System.out.println("Elapsed when using a prepared statement: " + elapsed);
+
+
+        start = System.currentTimeMillis();
+        try (Statement statement = connection.createStatement()) {
+            String insert = "INSERT INTO events(activity, time_and_date) VALUES " +
+                    "('Event2', '2018-12-2 18:00')";
+            statement.execute(insert);
+        } catch (Exception exx) {
+            System.out.println("Problem here");
+        }
+        stop = System.currentTimeMillis();
+        elapsed = stop - start;
+
+        System.out.println("Elapsed when using a statement: " + elapsed);
+    }
 }
 

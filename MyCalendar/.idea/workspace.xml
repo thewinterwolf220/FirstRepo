@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="24ad0dd5-b990-4f4c-8e6b-149f915390d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +15,7 @@
     <session id="1852345030">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.36" value="1" />
@@ -37,9 +36,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="DBN-SQL" value="5" />
-          <entry key="JAVA" value="9242" />
+          <entry key="JAVA" value="9289" />
           <entry key="Kotlin" value="15" />
-          <entry key="PLAIN_TEXT" value="1250" />
+          <entry key="PLAIN_TEXT" value="1296" />
         </counts>
       </usages-collector>
     </session>
@@ -49,14 +48,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="167" column="30" lean-forward="true" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="30" />
+            <state relative-caret-position="357">
+              <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
                 <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
+                <element signature="method#addEvent#0;class#DatabaseOperator#0" />
                 <element signature="e#2570#2669#0" />
-                <element signature="method#PREPAREDEvent#0;class#DatabaseOperator#0" />
+                <element signature="sql_statement#0#128" />
+                <element signature="method#addPreparedEvent#0;class#DatabaseOperator#0" />
                 <element signature="e#6292#6293#0" expanded="true" />
                 <element signature="e#6337#6338#0" expanded="true" />
                 <element signature="method#addTask#0;class#DatabaseOperator#0" />
@@ -162,7 +163,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543751057192" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543751122372" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -376,7 +377,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543746121336</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Created test to compare performance">
+      <created>1543751135583</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1543751135583</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -412,7 +420,7 @@
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="11" visible="true" weight="0.23235613" />
+      <window_info anchor="bottom" id="Run" order="11" weight="0.23235613" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
@@ -457,7 +465,8 @@
     <MESSAGE value="Improved login logic, added method to study db metadata" />
     <MESSAGE value="Removed NullPointerException using an assert statement" />
     <MESSAGE value="Ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ignore" />
+    <MESSAGE value="Created test to compare performance" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created test to compare performance" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -587,14 +596,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="167" column="30" lean-forward="true" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="30" />
+        <state relative-caret-position="357">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
             <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
+            <element signature="method#addEvent#0;class#DatabaseOperator#0" />
             <element signature="e#2570#2669#0" />
-            <element signature="method#PREPAREDEvent#0;class#DatabaseOperator#0" />
+            <element signature="sql_statement#0#128" />
+            <element signature="method#addPreparedEvent#0;class#DatabaseOperator#0" />
             <element signature="e#6292#6293#0" expanded="true" />
             <element signature="e#6337#6338#0" expanded="true" />
             <element signature="method#addTask#0;class#DatabaseOperator#0" />

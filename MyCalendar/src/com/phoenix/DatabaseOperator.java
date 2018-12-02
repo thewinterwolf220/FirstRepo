@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 class DatabaseOperator {
 
@@ -18,7 +17,6 @@ class DatabaseOperator {
     private static String username = null;
     private static String password = null;
     private static boolean logged = false;
-
 
     static List<iEvent> eventsBetween(Calendar begin, Calendar end) {
         List<iEvent> all = new ArrayList<>();
@@ -30,7 +28,7 @@ class DatabaseOperator {
         try (Connection connection = connectToDatabase()) {
             for (String table : tables) {
 
-                String query = betweenStatement(table) + "'" + begin_ts + "'" + " AND " + "'" + end_ts + "'";
+                String query = selectBetween(table) + "'" + begin_ts + "'" + " AND " + "'" + end_ts + "'";
 
                 try (Statement statement = connection.createStatement()) {
                     statement.executeQuery(query);
@@ -56,7 +54,7 @@ class DatabaseOperator {
         try (Connection connection = connectToDatabase()) {
             for (String table : tables) {
 
-                String query = prepareStatement(table);
+                String query = selectFutureEvent(table);
 
                 try (Statement statement = connection.createStatement()) {
                     statement.executeQuery(query);
@@ -95,9 +93,6 @@ class DatabaseOperator {
                         "'" + attributes.get(3) + "'" +
                         ")";
                 statement.execute(insert);
-
-                System.out.println("Added a new task");
-
                 return true;
             }
         } catch (Exception exx) {
@@ -127,8 +122,6 @@ class DatabaseOperator {
                         ")";
 
                 statement.execute(insert);
-                System.out.println("Added a new task");
-
                 return true;
             }
         } catch (Exception exx) {
@@ -154,62 +147,11 @@ class DatabaseOperator {
                         "'" + endOfEvent + "'" +
                         ")";
                 statement.execute(insert);
-                System.out.println("Added a new event");
-
                 return true;
             }
         } catch (Exception exx) {
             return false;
         }
-    }
-
-    private static int countEvents() {
-        int count = 0;
-        try (Connection connection = connectToDatabase()) {
-            try (Statement statement = connection.createStatement()) {
-
-                String select = "SELECT activity FROM events WHERE time_and_date > clock_timestamp()";
-
-                statement.executeQuery(select);
-                count = (int) Stream.of(statement.getResultSet()).count();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
-    private static int countTasks() {
-        int count = 0;
-        try (Connection connection = connectToDatabase()) {
-            try (Statement statement = connection.createStatement()) {
-
-                String select = "SELECT activity FROM tasks WHERE time_and_date > clock_timestamp()";
-
-                statement.executeQuery(select);
-                count = (int) Stream.of(statement.getResultSet()).count();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
-    private static int countDurEvents() {
-        int count = 0;
-        try (Connection connection = connectToDatabase()) {
-            try (Statement statement = connection.createStatement()) {
-
-                String select = "SELECT activity FROM durable_events WHERE time_and_date > clock_timestamp()";
-
-                statement.executeQuery(select);
-                count = (int) Stream.of(statement.getResultSet()).count();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return count;
-
     }
 
     private static int countTables() {
@@ -245,7 +187,7 @@ class DatabaseOperator {
         return tables;
     }
 
-    private static String prepareStatement(String table) {
+    private static String selectFutureEvent(String table) {
         switch (table) {
             case "events":
                 return "SELECT activity, place, time_and_date, details FROM events " +
@@ -261,8 +203,7 @@ class DatabaseOperator {
         }
     }
 
-
-    private static String betweenStatement(String table) {
+    private static String selectBetween(String table) {
         switch (table) {
             case "events":
                 return "SELECT activity, place, time_and_date, details FROM events " +

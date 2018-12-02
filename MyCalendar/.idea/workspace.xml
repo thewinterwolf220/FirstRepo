@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24ad0dd5-b990-4f4c-8e6b-149f915390d7" name="Default Changelist" comment="Restore do while and enabled event filtering">
+    <list default="true" id="24ad0dd5-b990-4f4c-8e6b-149f915390d7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyCalendar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MyCalendar.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,11 +16,13 @@
     <session id="1852345030">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -29,16 +30,16 @@
           <entry key="CLASS" value="4" />
           <entry key="DBN-SQL" value="5" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="30" />
+          <entry key="JAVA" value="39" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="DBN-SQL" value="4" />
-          <entry key="JAVA" value="7036" />
+          <entry key="JAVA" value="8065" />
           <entry key="Kotlin" value="15" />
-          <entry key="PLAIN_TEXT" value="906" />
+          <entry key="PLAIN_TEXT" value="1188" />
         </counts>
       </usages-collector>
     </session>
@@ -48,54 +49,33 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-              <folding>
-                <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
-                <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
-                <element signature="method#addEvent#0;class#DatabaseOperator#0" />
-                <element signature="method#addTask#0;class#DatabaseOperator#0" />
-                <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
-                <element signature="method#countEvents#0;class#DatabaseOperator#0" />
-                <element signature="method#countTasks#0;class#DatabaseOperator#0" />
-                <element signature="method#countDurEvents#0;class#DatabaseOperator#0" />
-                <element signature="method#countTables#0;class#DatabaseOperator#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyCalendar.iml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1098">
-              <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+            <state relative-caret-position="256">
+              <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/phoenix/Wizards.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-              <folding>
-                <element signature="method#taskWizard#0;class#Wizards#0" />
-                <element signature="method#conferenceWizard#0;class#Wizards#0" />
+                <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
+                <element signature="sql_statement#0#161" />
+                <element signature="method#countTables#0;class#DatabaseOperator#0" />
+                <element signature="method#getTables#0;class#DatabaseOperator#0" />
+                <element signature="method#selectFutureEvent#0;class#DatabaseOperator#0" />
+                <element signature="method#selectBetween#0;class#DatabaseOperator#0" />
+                <element signature="method#connectToDatabase#0;class#DatabaseOperator#0" />
+                <element signature="method#login#0;class#DatabaseOperator#0" />
+                <element signature="e#10247#10248#0" expanded="true" />
+                <element signature="e#10279#10280#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -126,14 +106,14 @@
         <option value="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.kt" />
         <option value="$PROJECT_DIR$/src/com/phoenix/Wizards.java" />
         <option value="$PROJECT_DIR$/src/com/phoenix/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/phoenix/iConference.java" />
         <option value="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="959" />
+  <component name="ProjectFrameBounds">
     <option name="y" value="24" />
-    <option name="width" value="959" />
+    <option name="width" value="1095" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -143,7 +123,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -171,14 +150,15 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543701867684" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543746084513" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RunDashboard">
@@ -340,7 +320,42 @@
       <option name="project" value="LOCAL" />
       <updated>1543701581359</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Created function that allows to filter events in a range.&#10;Created an auxiliary function">
+      <created>1543701938782</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1543701938782</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Tidy up and rename">
+      <created>1543743874929</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1543743874930</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Removed kotlin library">
+      <created>1543743998170</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1543743998170</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Improved login logic, added method to study db metadata">
+      <created>1543745590712</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1543745590712</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Improved login logic, added method to study db metadata">
+      <created>1543745938927</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1543745938927</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView">
@@ -353,17 +368,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1919" height="1055" extended-state="6" />
+    <frame x="0" y="24" width="1095" height="1055" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.115856916" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18970448" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Learn" order="6" weight="0.32995194" />
-      <window_info id="DB Browser" order="7" weight="0.32995194" />
+      <window_info id="DB Browser" order="7" weight="0.32983795" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="DB Execution Console" order="0" />
       <window_info anchor="bottom" id="Messages" order="1" weight="0.32899022" />
@@ -376,6 +391,7 @@
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32899022" />
+      <window_info active="true" anchor="bottom" id="Run" order="11" visible="true" weight="0.20738328" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
@@ -384,7 +400,6 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.32888415" />
     </layout>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -416,7 +431,11 @@
     <MESSAGE value="Ignore" />
     <MESSAGE value="Refactored and added new useful method" />
     <MESSAGE value="Restore do while and enabled event filtering" />
-    <option name="LAST_COMMIT_MESSAGE" value="Restore do while and enabled event filtering" />
+    <MESSAGE value="Created function that allows to filter events in a range.&#10;Created an auxiliary function" />
+    <MESSAGE value="Tidy up and rename" />
+    <MESSAGE value="Removed kotlin library" />
+    <MESSAGE value="Improved login logic, added method to study db metadata" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved login logic, added method to study db metadata" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -453,38 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/iDurableEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/iTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/iConference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Factory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-          <folding>
-            <element signature="method#buildEvent#0;class#Factory#0" />
-            <element signature="method#buildConference#1;class#Factory#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt:///usr/lib/jvm/java-1.10.0-openjdk-amd64!/java.sql/java/sql/Connection.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -493,29 +480,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.kt" />
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/iEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+        <state relative-caret-position="1092">
+          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
           <folding>
-            <element signature="method#calendarToTimestamp#0;class#Utils#0" />
-            <element signature="method#fetchTask#0;class#Utils#0" />
-            <element signature="method#fetchDurableEvent#0;class#Utils#0" />
-            <element signature="method#timestampToCalendar#0;class#Utils#0" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phoenix/Wizards.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="231">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="method#taskWizard#0;class#Wizards#0" />
@@ -524,33 +501,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
-          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Try.java">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/MyCalendar.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/iEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/iTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="16" column="6" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Factory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding>
+            <element signature="method#buildEvent#0;class#Factory#0" />
+            <element signature="e#376#377#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="method#buildConference#0;class#Factory#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/iDurableEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/iConference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="method#calendarToTimestamp#0;class#Utils#0" />
+            <element signature="method#fetchGeneric#0;class#Utils#0" />
+            <element signature="method#fetchEvent#0;class#Utils#0" />
+            <element signature="method#fetchTask#0;class#Utils#0" />
+            <element signature="method#fetchDurableEvent#0;class#Utils#0" />
+            <element signature="method#timestampToCalendar#0;class#Utils#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
-            <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
-            <element signature="method#addEvent#0;class#DatabaseOperator#0" />
-            <element signature="method#addTask#0;class#DatabaseOperator#0" />
-            <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
-            <element signature="method#countEvents#0;class#DatabaseOperator#0" />
-            <element signature="method#countTasks#0;class#DatabaseOperator#0" />
-            <element signature="method#countDurEvents#0;class#DatabaseOperator#0" />
+            <element signature="sql_statement#0#161" />
             <element signature="method#countTables#0;class#DatabaseOperator#0" />
+            <element signature="method#getTables#0;class#DatabaseOperator#0" />
+            <element signature="method#selectFutureEvent#0;class#DatabaseOperator#0" />
+            <element signature="method#selectBetween#0;class#DatabaseOperator#0" />
+            <element signature="method#connectToDatabase#0;class#DatabaseOperator#0" />
+            <element signature="method#login#0;class#DatabaseOperator#0" />
+            <element signature="e#10247#10248#0" expanded="true" />
+            <element signature="e#10279#10280#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -631,7 +659,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>KotlinJavaRuntime</last-edited>
+          <last-edited>lib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

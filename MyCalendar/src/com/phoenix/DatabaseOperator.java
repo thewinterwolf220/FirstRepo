@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class DatabaseOperator {
     private static final int MAX_ATTEMPTS = 3;
@@ -258,7 +259,9 @@ class DatabaseOperator {
 
     // Just to learn new things, metadata and other stuff.
     private static void getCols(@NotNull String table) {
+        List<String> columns = new ArrayList<>();
         try (Connection connection = connectToDatabase()) {
+            assert connection != null;
             try (Statement statement = connection.createStatement()) {
 
                 statement.executeQuery("SELECT * FROM " + table);
@@ -266,14 +269,13 @@ class DatabaseOperator {
                 ResultSet resultSetMetaData = statement.getResultSet();
                 ResultSetMetaData r = resultSetMetaData.getMetaData();
 
-                System.out.println("Name ==> Type");
                 for (int i = 1; i <= r.getColumnCount(); i++)
-                    System.out.println(r.getColumnLabel(i) + " ==> " + r.getColumnTypeName(i));
-
+                    columns.add(r.getColumnName(i));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println(columns.stream().collect(Collectors.joining(", ", "{", "}")));
     }
 
     public static void main(String[] args) {

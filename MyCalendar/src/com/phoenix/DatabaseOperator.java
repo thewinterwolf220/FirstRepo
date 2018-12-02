@@ -1,6 +1,7 @@
 package com.phoenix;
 
 import com.phoenix.calendar.Task;
+import org.jetbrains.annotations.NotNull;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import java.sql.*;
@@ -10,7 +11,6 @@ import java.util.Comparator;
 import java.util.List;
 
 class DatabaseOperator {
-
     private static final int MAX_ATTEMPTS = 3;
     private static PGSimpleDataSource source = new PGSimpleDataSource();
     private static int attempts = 0;
@@ -223,7 +223,7 @@ class DatabaseOperator {
         source.setServerName("localhost");
         source.setDatabaseName("calendar");
 
-        if (logged) { // Reuses username and password previously inserted
+        if (logged || username != null) { // Reuses username and password previously inserted
             source.setUser(username);
             source.setPassword(password);
         } else login();
@@ -254,6 +254,30 @@ class DatabaseOperator {
 
         source.setUser(username);
         source.setPassword(password);
+    }
+
+    // Just to learn new things, metadata and other stuff.
+    private static void getCols(@NotNull String table) {
+        try (Connection connection = connectToDatabase()) {
+            try (Statement statement = connection.createStatement()) {
+
+                statement.executeQuery("SELECT * FROM " + table);
+
+                ResultSet resultSetMetaData = statement.getResultSet();
+                ResultSetMetaData r = resultSetMetaData.getMetaData();
+
+                System.out.println("Name ==> Type");
+                for (int i = 1; i <= r.getColumnCount(); i++)
+                    System.out.println(r.getColumnLabel(i) + " ==> " + r.getColumnTypeName(i));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        getCols("tasks");
     }
 
 }

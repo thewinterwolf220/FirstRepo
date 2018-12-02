@@ -31,6 +31,7 @@ class DatabaseOperator {
 
                 String query = selectBetween(table) + "'" + begin_ts + "'" + " AND " + "'" + end_ts + "'";
 
+                assert connection != null;
                 try (Statement statement = connection.createStatement()) {
                     statement.executeQuery(query);
                     ResultSet set = statement.getResultSet();
@@ -57,6 +58,7 @@ class DatabaseOperator {
 
                 String query = selectFutureEvent(table);
 
+                assert connection != null;
                 try (Statement statement = connection.createStatement()) {
                     statement.executeQuery(query);
                     ResultSet set = statement.getResultSet();
@@ -84,6 +86,7 @@ class DatabaseOperator {
         Timestamp timeOfEvent = Utils.calendarToTimestamp(attributes.get(2));
 
         try (Connection connection = connectToDatabase()) {
+            assert connection != null;
             try (Statement statement = connection.createStatement()) {
 
                 String insert = "INSERT INTO events(activity, place, time_and_date, details) VALUES " +
@@ -111,6 +114,7 @@ class DatabaseOperator {
         int priority = ((Task.Priority) attributes.get(4)).getImportance();
 
         try (Connection connection = connectToDatabase()) {
+            assert connection != null;
             try (Statement statement = connection.createStatement()) {
 
                 String insert = "INSERT INTO tasks(activity, place, time_and_date, details, priority) VALUES" +
@@ -137,6 +141,7 @@ class DatabaseOperator {
         Timestamp endOfEvent = Utils.calendarToTimestamp(attributes.get(4));
 
         try (Connection connection = connectToDatabase()) {
+            assert connection != null;
             try (Statement statement = connection.createStatement()) {
 
                 String insert = "INSERT INTO durable_events(activity, place, time_and_date, details, end_time) VALUES" +
@@ -159,6 +164,8 @@ class DatabaseOperator {
         int count = 0;
         try (Connection connection = connectToDatabase()) {
 
+            assert connection != null;
+
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet res = metaData.getTables(null, null, null, new String[]{"TABLE"});
 
@@ -175,6 +182,8 @@ class DatabaseOperator {
         List<String> tables = new ArrayList<>(countTables());
 
         try (Connection connection = connectToDatabase()) {
+
+            assert connection != null;
 
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet res = metaData.getTables(null, null, null, new String[]{"TABLE"});

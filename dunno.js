@@ -6,4 +6,5 @@ function fibonacci(n) {
     }
 }
 
+console.log("JavaScript seems interesting"); 
 console.log(fibonacci(6));

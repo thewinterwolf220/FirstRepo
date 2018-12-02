@@ -1,7 +1,7 @@
 package com.phoenix;
 
-import com.phoenix.calendar.Conference;
-import com.phoenix.calendar.Event;
+import com.phoenix.calendar.api.Conference;
+import com.phoenix.calendar.api.SimpleEvent;
 
 import java.util.Calendar;
 
@@ -18,7 +18,7 @@ public class iConference extends iEvent implements Conference {
         this.numberOfAttendees = numberOfAttendees;
     }
 
-    iConference(Event e, String speaker, String topic, int numberOfAttendees) {
+    iConference(SimpleEvent e, String speaker, String topic, int numberOfAttendees) {
         super(e);
         this.speaker = speaker;
         this.topic = topic;

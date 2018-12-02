@@ -1,7 +1,8 @@
 package com.phoenix;
 
-import com.phoenix.calendar.Task;
-import com.phoenix.calendar.Utils;
+import com.phoenix.calendar.api.Task;
+import com.phoenix.calendar.api.Utils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Calendar;
 import java.util.Scanner;
@@ -11,14 +12,13 @@ import static com.phoenix.Factory.*;
 class Wizards {
     private static Scanner reader = new Scanner(System.in);
 
-
     static Calendar timeWizard() {
         System.out.println("Date: hh mm [dd MM YYYY]");
         String time = reader.nextLine();
         return Utils.createTime(Utils.lineToTime(time));
     }
 
-
+    @NotNull
     static iEvent eventWizard() {
         System.out.println("Activity: ");
         String activity = reader.nextLine();
@@ -34,7 +34,7 @@ class Wizards {
         return buildEvent(activity, place, date, details);
     }
 
-
+    @NotNull
     static iDurableEvent durableEventWizard() {
         iEvent tmp = buildEvent(eventWizard());
 
@@ -45,7 +45,7 @@ class Wizards {
         return buildEvent(tmp, end);
     }
 
-
+    @NotNull
     static iTask taskWizard() {
         iEvent tmp = buildEvent(eventWizard());
 
@@ -56,6 +56,7 @@ class Wizards {
         return buildTask(tmp, Task.getPriority(Integer.valueOf(priority)));
     }
 
+    @NotNull
     static iConference conferenceWizard() {
         System.out.println("Speaker of the conference: ");
         String speaker = reader.nextLine();

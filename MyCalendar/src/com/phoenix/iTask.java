@@ -1,14 +1,11 @@
 package com.phoenix;
 
-import com.phoenix.calendar.Event;
-import com.phoenix.calendar.Task;
-import com.phoenix.calendar.Utils;
+import com.phoenix.calendar.api.SimpleEvent;
+import com.phoenix.calendar.api.Task;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.TestOnly;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 class iTask extends iEvent implements Task {
 
@@ -19,13 +16,11 @@ class iTask extends iEvent implements Task {
         this.priority = priority;
     }
 
-    iTask(Event e, Priority priority) {
+    iTask(SimpleEvent e, Priority priority) {
         super(e);
         this.priority = priority;
     }
 
-
-    // Tested method.
     @Override
     public @NotNull ArrayList<Object> getAttributes() {
         ArrayList<Object> attributes = super.getAttributes();

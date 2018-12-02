@@ -1,6 +1,6 @@
 package com.phoenix;
 
-import com.phoenix.calendar.Task;
+import com.phoenix.calendar.api.Task;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,7 +21,8 @@ class Utils {
         return new Timestamp(timeInMillis);
     }
 
-    static iEvent fetchGeneric(String tableName, ResultSet set) {
+    @NotNull
+    static iEvent fetchGeneric(@NotNull String tableName, @NotNull ResultSet set) {
         try {
             switch (tableName) {
                 case "events":
@@ -35,10 +36,12 @@ class Utils {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            System.exit(1);
         }
+        return null;
     }
 
+    @NotNull
     private static iEvent fetchEvent(@NotNull ResultSet resultSet) throws SQLException {
         String activity = resultSet.getString(1);
         String place = resultSet.getString(2);
@@ -48,6 +51,7 @@ class Utils {
         return new iEvent(activity, place, date, details);
     }
 
+    @NotNull
     private static iTask fetchTask(@NotNull ResultSet resultSet) throws SQLException {
         String activity = resultSet.getString(1);
         String place = resultSet.getString(2);
@@ -59,6 +63,7 @@ class Utils {
         return new iTask(activity, place, date, details, priority);
     }
 
+    @NotNull
     private static iDurableEvent fetchDurableEvent(@NotNull ResultSet resultSet) throws SQLException {
         String activity = resultSet.getString(1);
         String place = resultSet.getString(2);
@@ -69,9 +74,8 @@ class Utils {
         return new iDurableEvent(activity, place, date, details, endTime);
     }
 
-
     @Contract("null -> null")
-    private static Calendar timestampToCalendar(Object obj) {
+    private static Calendar timestampToCalendar(@NotNull Object obj) {
         if (!(obj instanceof Timestamp))
             return null;
 

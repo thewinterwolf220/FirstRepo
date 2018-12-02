@@ -1,7 +1,10 @@
 package com.phoenix;
 
-import com.phoenix.calendar.Task;
+import com.phoenix.calendar.api.Task;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.TestOnly;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import java.sql.*;
@@ -12,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.phoenix.Utils.calendarToTimestamp;
-import static com.phoenix.calendar.Utils.createTime;
+import static com.phoenix.calendar.api.Utils.createTime;
 
 class DatabaseOperator {
     private static final int MAX_ATTEMPTS = 3;
@@ -108,69 +111,6 @@ class DatabaseOperator {
         }
     }
 
-    private static boolean addPreparedEvent() {
-        Object[] attributes = Wizards.eventWizard().getAttributes().toArray();
-
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
-
-            String sql = "INSERT INTO events(activity, place, time_and_date, details) VALUES(?, ?, ?, ?)";
-
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, (String) attributes[0]);
-                statement.setString(2, (String) attributes[1]);
-                statement.setTimestamp(3, calendarToTimestamp(attributes[2]));
-                statement.setString(4, (String) attributes[3]);
-
-                int count = statement.executeUpdate();
-                System.out.println(count);
-                return statement.execute();
-            }
-        } catch (Exception exx) {
-            return false;
-        }
-    }
-
-    private static void test_speed_prepared_and_not() {
-        long start = System.currentTimeMillis();
-
-        try (Connection connection = connectToDatabase()) {
-            assert connection != null;
-            String sql = "INSERT INTO events(activity,time_and_date) VALUES(?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, "Event1");
-                statement.setTimestamp(2, calendarToTimestamp(createTime(18, 00)));
-                statement.execute();
-            }
-        } catch (Exception exx) {
-        }
-
-        long stop = System.currentTimeMillis();
-        long elapsed = stop - start;
-
-        System.out.println("Elapsed when using a prepared statement: " + elapsed);
-
-
-        start = System.currentTimeMillis();
-        try (Connection connection = connectToDatabase()) {
-            try (Statement statement = connection.createStatement()) {
-                String insert = "INSERT INTO events(activity, time_and_date) VALUES " +
-                        "('Event2', '2018-12-2 18:00')";
-                statement.execute(insert);
-            }
-        } catch (Exception exx) {
-        }
-        stop = System.currentTimeMillis();
-        elapsed = stop - start;
-
-        System.out.println("Elapsed when using a statement: " + elapsed);
-    }
-
-
-    public static void main(String[] args) {
-        test_speed_prepared_and_not();
-    }
-
     static boolean addTask() {
 
         ArrayList<Object> attributes = Wizards.taskWizard().getAttributes();
@@ -227,6 +167,73 @@ class DatabaseOperator {
         }
     }
 
+
+    private static boolean addPreparedEvent() {
+        Object[] attributes = Wizards.eventWizard().getAttributes().toArray();
+
+        try (Connection connection = connectToDatabase()) {
+            assert connection != null;
+
+            String sql = "INSERT INTO events(activity, place, time_and_date, details) VALUES(?, ?, ?, ?)";
+
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, (String) attributes[0]);
+                statement.setString(2, (String) attributes[1]);
+                statement.setTimestamp(3, calendarToTimestamp(attributes[2]));
+                statement.setString(4, (String) attributes[3]);
+
+                int count = statement.executeUpdate();
+                System.out.println(count);
+                return statement.execute();
+            }
+        } catch (Exception exx) {
+            return false;
+        }
+    }
+
+    @TestOnly
+    private static void test_speed_prepared_and_not() {
+        long start = System.currentTimeMillis();
+
+        try (Connection connection = connectToDatabase()) {
+            assert connection != null;
+            String sql = "INSERT INTO events(activity,time_and_date) VALUES(?, ?)";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, "Event1");
+                statement.setTimestamp(2, calendarToTimestamp(createTime(18, 0)));
+                statement.execute();
+            }
+        } catch (Exception exx) {
+            System.out.println("Problem here");
+        }
+
+        long stop = System.currentTimeMillis();
+        long elapsed = stop - start;
+
+        System.out.println("Elapsed when using a prepared statement: " + elapsed);
+
+
+        start = System.currentTimeMillis();
+        try (Connection connection = connectToDatabase()) {
+            assert connection != null;
+            try (Statement statement = connection.createStatement()) {
+                String insert = "INSERT INTO events(activity, time_and_date) VALUES " +
+                        "('Event2', '2018-12-2 18:00')";
+                statement.execute(insert);
+            }
+        } catch (Exception exx) {
+            System.out.println("Problem here");
+        }
+        stop = System.currentTimeMillis();
+        elapsed = stop - start;
+
+        System.out.println("Elapsed when using a statement: " + elapsed);
+    }
+
+    public static void main(String[] args) {
+        test_speed_prepared_and_not();
+    }
+
     private static int countTables() {
         int count = 0;
         try (Connection connection = connectToDatabase()) {
@@ -264,6 +271,8 @@ class DatabaseOperator {
         return tables;
     }
 
+    @NotNull
+    @Contract(pure = true)
     private static String selectFutureEvent(@NotNull String table) {
         switch (table) {
             case "events":
@@ -280,6 +289,8 @@ class DatabaseOperator {
         }
     }
 
+    @NotNull
+    @Contract(pure = true)
     private static String selectBetween(@NotNull String table) {
         switch (table) {
             case "events":
@@ -296,6 +307,7 @@ class DatabaseOperator {
         }
     }
 
+    @Nullable
     private static Connection connectToDatabase() {
         source.setServerName("localhost");
         source.setDatabaseName("calendar");
@@ -353,19 +365,6 @@ class DatabaseOperator {
         }
         System.out.println(columns.stream().collect(Collectors.joining(", ", "{", "}")));
     }
-//
-//    private static void prepSt() {
-//        try (Connection connection = connectToDatabase()) {
-//            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM tasks")) {
-//
-//
-//
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
 
 }
 

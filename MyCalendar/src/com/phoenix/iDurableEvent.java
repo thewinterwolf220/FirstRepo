@@ -1,7 +1,7 @@
 package com.phoenix;
 
-import com.phoenix.calendar.DurableEvent;
-import com.phoenix.calendar.Event;
+import com.phoenix.calendar.api.DurableEvent;
+import com.phoenix.calendar.api.SimpleEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class iDurableEvent extends iEvent implements DurableEvent {
         this.endTime = endTime;
     }
 
-    iDurableEvent(@NotNull Event e, Calendar endTime) {
+    iDurableEvent(@NotNull SimpleEvent e, Calendar endTime) {
         super(e);
         this.endTime = endTime;
     }

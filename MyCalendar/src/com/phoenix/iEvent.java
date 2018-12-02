@@ -1,14 +1,15 @@
 package com.phoenix;
 
-import com.phoenix.calendar.Event;
-import com.phoenix.calendar.Utils;
+
+import com.phoenix.calendar.api.SimpleEvent;
+import com.phoenix.calendar.api.Utils;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class iEvent implements Event {
+public class iEvent implements SimpleEvent {
     private String activity;
     private String place;
     private Calendar calendar;
@@ -22,7 +23,7 @@ public class iEvent implements Event {
     }
 
     //Shallow copy builder
-    iEvent(@NotNull Event e) {
+    iEvent(@NotNull SimpleEvent e) {
         this.activity = e.getActivity();
         this.place = e.getPlace();
         this.details = e.getDetails();
@@ -50,10 +51,14 @@ public class iEvent implements Event {
     }
 
     @Override
+    public String timeAsString() {
+        return dateFormat.format(calendar.getTime());
+    }
+
+    @Override
     public Calendar getCalendar() {
         return calendar;
     }
-
 
     @Override
     public String getDetails() {

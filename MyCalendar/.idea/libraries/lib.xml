@@ -1,12 +1,10 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/annotations-16.0.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/apicalendar@1.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/postgresql-42.2.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/api.calendar@1.3.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
   </library>
 </component>

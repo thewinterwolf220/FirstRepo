@@ -16,7 +16,6 @@ public class Main {
         System.out.println("0. Exit");
     }
 
-
     private static void choiceCollector(int choice) {
         switch (choice) {
             case 1:

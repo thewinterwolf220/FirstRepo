@@ -20,10 +20,11 @@ import static com.phoenix.calendar.api.Utils.createTime;
 class DatabaseOperator {
     private static final int MAX_ATTEMPTS = 3;
     private static PGSimpleDataSource source = new PGSimpleDataSource();
+    private static Connection connection;
     private static int attempts = 0;
     private static String username = null;
     private static String password = null;
-    private static boolean logged = false;
+    private static boolean loggedIn = false;
 
 
     static List<iEvent> eventsBetween(Calendar begin, Calendar end) {
@@ -166,7 +167,6 @@ class DatabaseOperator {
             return false;
         }
     }
-
 
     private static boolean addPreparedEvent() {
         Object[] attributes = Wizards.eventWizard().getAttributes().toArray();
@@ -312,20 +312,20 @@ class DatabaseOperator {
         source.setServerName("localhost");
         source.setDatabaseName("calendar");
 
-        if (logged || username != null) { // Reuses username and password previously inserted
+        if (loggedIn) { // Reuses username and password previously inserted
             source.setUser(username);
             source.setPassword(password);
         } else login();
 
         try {
-            logged = true;
+            loggedIn = true;
             return source.getConnection();
         } catch (SQLException e) {
             attempts++;
-            logged = false;
+            loggedIn = false;
             System.out.println("Wrong credentials, retry.");
 
-            if (attempts > MAX_ATTEMPTS) {
+            if (attempts >= MAX_ATTEMPTS) {
                 System.out.println("You can't retry");
                 return null;
             }

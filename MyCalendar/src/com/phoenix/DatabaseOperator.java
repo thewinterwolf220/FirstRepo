@@ -18,24 +18,9 @@ import static com.phoenix.Utils.calendarToTimestamp;
 class DatabaseOperator {
     private static PGSimpleDataSource source = new PGSimpleDataSource();
     private static Connection connection;
-    private static String username = "marco";
-    private static String password = "1123581321";
+    private static String username = null;
+    private static String password = null;
     private static boolean loggedIn = false;
-
-    static void establishConnection() {
-        if (loggedIn) return;
-
-        if (username == null) login();
-
-        configureDatabaseConnection();
-
-        try {
-            connection = source.getConnection();
-            loggedIn = true;
-        } catch (SQLException e) {
-            System.exit(1);
-        }
-    }
 
     static List<iEvent> eventsBetween(Calendar begin, Calendar end) {
         List<iEvent> all = new ArrayList<>();
@@ -251,6 +236,7 @@ class DatabaseOperator {
     }
 
     // Just to learn new things, metadata and other stuff.
+
     private static void getCols(@NotNull String table) {
         List<String> columns = new ArrayList<>();
         try (Statement statement = connection.createStatement()) {
@@ -268,6 +254,22 @@ class DatabaseOperator {
         System.out.println(columns.stream().collect(Collectors.joining(", ", "{", "}")));
     }
 
+
+    static void establishConnection() {
+        if (loggedIn) return;
+
+        if (username == null) login();
+
+        configureDatabaseConnection();
+
+        try {
+            connection = source.getConnection();
+            loggedIn = true;
+        } catch (SQLException e) {
+            System.exit(1);
+        }
+    }
+
     private static void configureDatabaseConnection() {
         source.setUser(username);
         source.setPassword(password);
@@ -282,47 +284,68 @@ class DatabaseOperator {
         password = Main.keyboard.nextLine();
     }
 
-    @TestOnly
-    // 11667 for 1000
-    private static void test_speed_prepared_and_not() {
-        int testVariable = 1000;
-        String[] values = new String[testVariable];
-        for (int i = 0; i < testVariable; i++) values[i] = "name#" + i;
 
+    @TestOnly
+    // It would seem that using auto commits and prepared statements
+    // boosts performance by an significant factor
+    // 11667 for 1000  w/ autocommit
+    // 2954 for 5000   prepared statement without autocommit. <=== performance boost
+    private static void test_performance_notPrepared_vs_Prepared(int sizeOfArray) throws SQLException {
+        String[] arr = array_init(sizeOfArray);
         establishConnection();
 
-        long start1 = System.currentTimeMillis();
-        try (Statement statement = connection.createStatement()) {
-            for (String s : values) {
-                String insert = "INSERT INTO test VALUES ('" + s + "')";
-                statement.execute(insert);
-            }
-        } catch (Exception exx) {
-            exx.printStackTrace();
+        connection.setAutoCommit(false);
+
+        long performance1 = with_normal_statements(arr);
+        long performance2 = with_prepared_statements(arr);
+
+        long difference = performance1 - performance2;
+        long absDiff = Math.abs(difference);
+
+        if (difference > 0) System.out.println("Prepared statements perform better");
+        else System.out.println("Normal statements perform better");
+
+        System.out.println("The difference is " + (double) absDiff / 1000 + " seconds");
+
+    }
+
+    private static long with_normal_statements(String[] arr) throws SQLException {
+        long start = System.currentTimeMillis();
+
+        Statement statement = connection.createStatement();
+
+        for (String s : arr)
+            statement.execute("INSERT INTO testtable VALUES ('" + s + "')");
+
+        connection.commit();
+        return System.currentTimeMillis() - start;
+    }
+
+    private static long with_prepared_statements(String[] arr) throws SQLException {
+        long start = System.currentTimeMillis();
+
+        String sql = "INSERT INTO testtable VALUES(?)";
+        PreparedStatement statement2 = connection.prepareStatement(sql);
+        for (String s : arr) {
+            statement2.setString(1, s);
+            statement2.execute();
         }
-        long elapsed1 = System.currentTimeMillis() - start1;
-        System.out.println("Normal statement: " + elapsed1);
+        connection.commit();
+        return System.currentTimeMillis() - start;
+    }
 
-
-        String sql = "INSERT INTO test VALUES(?)";
-        long start2 = System.currentTimeMillis();
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            for (String s : values) {
-                statement.setString(1, s);
-                statement.execute();
-            }
-        } catch (Exception exx) {
-            exx.printStackTrace();
-        }
-        long elapsed2 = System.currentTimeMillis() - start2;
-        System.out.println("Prepared statement: " + elapsed2);
-
-
-        System.out.println("Ratio is " + ((double) elapsed1 / elapsed2) * 100 + "%");
+    private static String[] array_init(int size) {
+        String[] arr = new String[size];
+        for (int i = 0; i < size; i++) arr[i] = "name#" + (i + 1);
+        return arr;
     }
 
     public static void main(String[] args) {
-        test_speed_prepared_and_not();
+        try {
+            test_performance_notPrepared_vs_Prepared(50000);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 

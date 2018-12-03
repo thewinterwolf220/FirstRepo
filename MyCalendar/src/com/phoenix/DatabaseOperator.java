@@ -14,19 +14,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.phoenix.Utils.calendarToTimestamp;
-import static com.phoenix.calendar.api.Utils.createTime;
 
 class DatabaseOperator {
     private static PGSimpleDataSource source = new PGSimpleDataSource();
     private static Connection connection;
-    private static String username = null;
-    private static String password = null;
+    private static String username = "marco";
+    private static String password = "1123581321";
     private static boolean loggedIn = false;
 
     static void establishConnection() {
         if (loggedIn) return;
 
-        login();
+        if (username == null) login();
+
         configureDatabaseConnection();
 
         try {
@@ -274,6 +274,7 @@ class DatabaseOperator {
         source.setServerName("localhost");
         source.setDatabaseName("calendar");
     }
+
     private static void login() {
         System.out.println("User ");
         username = Main.keyboard.nextLine();
@@ -282,36 +283,46 @@ class DatabaseOperator {
     }
 
     @TestOnly
+    // 11667 for 1000
     private static void test_speed_prepared_and_not() {
-        long start = System.currentTimeMillis();
+        int testVariable = 1000;
+        String[] values = new String[testVariable];
+        for (int i = 0; i < testVariable; i++) values[i] = "name#" + i;
 
-        String sql = "INSERT INTO events(activity,time_and_date) VALUES(?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, "Event1");
-            statement.setTimestamp(2, calendarToTimestamp(createTime(18, 0)));
-            statement.execute();
-        } catch (Exception exx) {
-            System.out.println("Problem here");
-        }
+        establishConnection();
 
-        long stop = System.currentTimeMillis();
-        long elapsed = stop - start;
-
-        System.out.println("Elapsed when using a prepared statement: " + elapsed);
-
-
-        start = System.currentTimeMillis();
+        long start1 = System.currentTimeMillis();
         try (Statement statement = connection.createStatement()) {
-            String insert = "INSERT INTO events(activity, time_and_date) VALUES " +
-                    "('Event2', '2018-12-2 18:00')";
-            statement.execute(insert);
+            for (String s : values) {
+                String insert = "INSERT INTO test VALUES ('" + s + "')";
+                statement.execute(insert);
+            }
         } catch (Exception exx) {
-            System.out.println("Problem here");
+            exx.printStackTrace();
         }
-        stop = System.currentTimeMillis();
-        elapsed = stop - start;
+        long elapsed1 = System.currentTimeMillis() - start1;
+        System.out.println("Normal statement: " + elapsed1);
 
-        System.out.println("Elapsed when using a statement: " + elapsed);
+
+        String sql = "INSERT INTO test VALUES(?)";
+        long start2 = System.currentTimeMillis();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            for (String s : values) {
+                statement.setString(1, s);
+                statement.execute();
+            }
+        } catch (Exception exx) {
+            exx.printStackTrace();
+        }
+        long elapsed2 = System.currentTimeMillis() - start2;
+        System.out.println("Prepared statement: " + elapsed2);
+
+
+        System.out.println("Ratio is " + ((double) elapsed1 / elapsed2) * 100 + "%");
+    }
+
+    public static void main(String[] args) {
+        test_speed_prepared_and_not();
     }
 }
 

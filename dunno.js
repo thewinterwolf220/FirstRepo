@@ -12,5 +12,5 @@ function two_to_the(n){
     else 
         return 2 * two_to_the(n-1);
 }
-var n = 5
+var n = 5; // Are they optional? 
 console.log("2 ^ " + n + " = " + two_to_the(5))

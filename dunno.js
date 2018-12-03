@@ -5,6 +5,11 @@ function fibonacci(n) {
     default: return fibonacci(n - 2) + fibonacci(n - 1);
     }
 }
+function two_to_the(n){
+    if (n === 0)
+        return 1;
+    else 
+        return 2 * two_to_the(n-1);
+}
 
-console.log("JavaScript seems interesting"); 
-console.log(fibonacci(6));
+console.log(two_to_the(5)) // Stands for 2 ^ 4 

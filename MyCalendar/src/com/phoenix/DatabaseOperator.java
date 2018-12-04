@@ -289,7 +289,7 @@ class DatabaseOperator {
     // It would seem that using auto commits and prepared statements
     // boosts performance by an significant factor
     // 11667 for 1000  w/ autocommit
-    // 2954 for 5000   prepared statement without autocommit. <=== performance boost
+    // 2954 for 5000   prepared statement with transaction block <== performance boost
     private static void test_performance_notPrepared_vs_Prepared(int sizeOfArray) throws SQLException {
         String[] arr = array_init(sizeOfArray);
         establishConnection();
@@ -298,6 +298,9 @@ class DatabaseOperator {
 
         long performance1 = with_normal_statements(arr);
         long performance2 = with_prepared_statements(arr);
+
+        System.out.println("Performance with normal statements: " + performance1);
+        System.out.println("Performance with prepared statements: " + performance2);
 
         long difference = performance1 - performance2;
         long absDiff = Math.abs(difference);
@@ -342,7 +345,7 @@ class DatabaseOperator {
 
     public static void main(String[] args) {
         try {
-            test_performance_notPrepared_vs_Prepared(50000);
+            test_performance_notPrepared_vs_Prepared(5000);
         } catch (SQLException e) {
             e.printStackTrace();
         }

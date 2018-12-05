@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24ad0dd5-b990-4f4c-8e6b-149f915390d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/DatabaseOperator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/DatabaseOperator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCalendar/com/phoenix/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,15 +15,15 @@
     <session id="1852345030">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -41,9 +38,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="DBN-SQL" value="6" />
-          <entry key="JAVA" value="14145" />
+          <entry key="JAVA" value="14249" />
           <entry key="Kotlin" value="15" />
-          <entry key="PLAIN_TEXT" value="1860" />
+          <entry key="PLAIN_TEXT" value="1877" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -62,50 +59,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="298" column="8" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
-              <folding>
-                <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
-                <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
-                <element signature="method#addEvent#0;class#DatabaseOperator#0" />
-                <element signature="method#addTask#0;class#DatabaseOperator#0" />
-                <element signature="method#addDurableEvent#0;class#DatabaseOperator#0" />
-                <element signature="method#addPreparedEvent#0;class#DatabaseOperator#0" />
-                <element signature="method#countTables#0;class#DatabaseOperator#0" />
-                <element signature="method#getTables#0;class#DatabaseOperator#0" />
-                <element signature="method#selectFutureEvent#0;class#DatabaseOperator#0" />
-                <element signature="method#selectBetween#0;class#DatabaseOperator#0" />
-                <element signature="method#getCols#0;class#DatabaseOperator#0" />
-                <element signature="method#establishConnection#0;class#DatabaseOperator#0" />
-                <element signature="method#configureDatabaseConnection#0;class#DatabaseOperator#0" />
-                <element signature="method#login#0;class#DatabaseOperator#0" />
-                <element signature="method#with_normal_statements#0;class#DatabaseOperator#0" />
-                <element signature="method#with_prepared_statements#0;class#DatabaseOperator#0" />
-                <element signature="method#array_init#0;class#DatabaseOperator#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#printOperations#0;class#Main#0" />
-                <element signature="method#choiceCollector#0;class#Main#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -156,10 +110,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="20" />
-    <option name="y" value="26" />
-    <option name="width" value="1346" />
-    <option name="height" value="741" />
+    <option name="y" value="24" />
+    <option name="width" value="1253" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -171,7 +124,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543838164800" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543934196602" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -449,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543824857974</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Nothing relevant">
+      <created>1543934209331</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1543934209331</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView">
@@ -462,8 +422,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="24" width="1919" height="1055" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -492,8 +451,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.37878788" />
-      <window_info anchor="right" id="Terminal" order="9" weight="0.3242424" />
+      <window_info anchor="right" id="Run" order="8" weight="0.37853712" />
+      <window_info anchor="right" id="Terminal" order="9" weight="0.324079" />
     </layout>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -510,7 +469,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Deleted unused variable" />
     <MESSAGE value="Improved" />
     <MESSAGE value="Removed unused methods" />
     <MESSAGE value="Now fetchGeneric works and allows for more flexibility" />
@@ -535,7 +493,8 @@
     <MESSAGE value="Improved login. &#10;Other method don't need to declare a sql exception and establish a &#10;new connection every time" />
     <MESSAGE value="ignore" />
     <MESSAGE value="Added performance test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added performance test" />
+    <MESSAGE value="Nothing relevant" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nothing relevant" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -639,13 +598,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/api.calendar@1.3.1.jar!/com/phoenix/calendar/api/Utils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/api.calendar@1.3.1.jar!/com/phoenix/calendar/api/Utils.class" />
     <entry file="file://$PROJECT_DIR$/src/com/phoenix/Wizards.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -669,8 +622,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phoenix/DatabaseOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="298" column="8" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
+        <state relative-caret-position="300">
+          <caret line="300" lean-forward="true" selection-start-line="300" selection-end-line="300" />
           <folding>
             <element signature="method#eventsBetween#0;class#DatabaseOperator#0" />
             <element signature="method#allFutureEvents#0;class#DatabaseOperator#0" />
@@ -686,7 +639,6 @@
             <element signature="method#establishConnection#0;class#DatabaseOperator#0" />
             <element signature="method#configureDatabaseConnection#0;class#DatabaseOperator#0" />
             <element signature="method#login#0;class#DatabaseOperator#0" />
-            <element signature="method#with_normal_statements#0;class#DatabaseOperator#0" />
             <element signature="method#with_prepared_statements#0;class#DatabaseOperator#0" />
             <element signature="method#array_init#0;class#DatabaseOperator#0" />
           </folding>
@@ -695,7 +647,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/phoenix/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="210">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />

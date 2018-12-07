@@ -49,15 +49,26 @@ public class Main {
 
 
     public static void main(String[] args) {
-        DatabaseOperator.establishConnection();
-        System.out.println("Database connected");
 
-        String code;
-        do {
-            printOperations();
-            code = keyboard.nextLine();
-            choiceCollector(Integer.valueOf(code));
-        } while (Integer.valueOf(code) != 0);
+        Thread conn = new Thread(DatabaseOperator::establishConnection);
+
+        // MAIN THREAD.
+        Thread main = new Thread(() -> {
+            try {
+                conn.start();
+                conn.join();
+
+            } catch (InterruptedException e) {
+            }
+            String code;
+            do {
+                printOperations();
+                code = keyboard.nextLine();
+                choiceCollector(Integer.valueOf(code));
+            } while (Integer.valueOf(code) != 0);
+        });
+
+        main.start();
     }
 }
 

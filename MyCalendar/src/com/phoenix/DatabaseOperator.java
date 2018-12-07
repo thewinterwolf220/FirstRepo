@@ -265,6 +265,7 @@ class DatabaseOperator {
         try {
             connection = source.getConnection();
             loggedIn = true;
+            System.out.println("Connected");
         } catch (SQLException e) {
             System.exit(1);
         }
@@ -309,7 +310,6 @@ class DatabaseOperator {
         else System.out.println("Normal statements perform better");
 
         System.out.println("The difference is " + (double) absDiff / 1000 + " seconds");
-
     }
 
     private static long with_normal_statements(String[] arr) throws SQLException {

@@ -1,0 +1,67 @@
+Chocolate Cookies,Milk,Papaya
+Apples,Milk,Diapers
+Chocolate cookies,Apples,Milk,Diapers
+Apples,Diapers
+
+From this we get 5 sets of 1 element:
+chocolate cookies, milk, papaya, apples, diapers.
+
+papaya is filtered out as its support is less than 50%
+
+Support:
+chocolate cookies   = 2/4
+diapers             = 3/4
+apples              = 3/4
+milk                = 3/4
+
+Using the remaining elements, four, we create subsets of 2 elements.
+The order is not important, they are combinations:
+
+4 choose 2 = 6.
+
+1. chocolate cookies, milk
+2. chocolate cookies, apples
+3. milk, apples
+4. diapers, apples
+5. milk, diapers
+6. diapers, chocolate cookies
+
+then we compute the support for each of the 2-element subsets.
+
+1. => 2/4
+2. => 1/4
+3. => 1/4
+4. => 2/4
+5. => 2/4
+6. => 1/4
+
+We filter out those with a support less than 0.5.
+We get:
+    chocolate cookies,milk
+    diapers, apples
+    milk, diapers
+    apples, milk
+
+Than we compute all the subsets with k = 3
+    4 choose 3  = 4.
+1. chocolate cookies, milk, apples
+2. chocolate cookies, milk, diapers
+3. milk, diapers, apples
+4. diapers, apples, chocolate cookies
+
+Compute the support for each: we can see that all of them have a support of 0.25,
+thus they can be all discarded.
+
+
+Let's make an association rule:
+    chocolate cookies => milk.
+    Compute the confidence of this:
+        C = S(cookies and milk)/ S(cookies) = 0.5 / 0.5  = 1
+    We keep it.
+
+    milk => cookies
+        C = S(cookies and milk)/ S(milk) = 0.5 / 0.75 = 0.67.
+
+    and so on...
+
+

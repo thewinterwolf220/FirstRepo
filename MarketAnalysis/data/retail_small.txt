@@ -1,0 +1,4 @@
+Chocolate Cookies,Milk,Papaya
+Apples,Milk,Diapers
+Chocolate cookies,Apples,Milk,Diapers
+Apples,Diapers
